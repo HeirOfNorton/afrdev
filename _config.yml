@@ -9,8 +9,8 @@ title: Always Free Resumé Builder
 description: >-
   blah blah
 
-baseurl: ""
-url: "https://alwaysfreeresume.com"
+baseurl: "/afrdev"
+url: "https://heirofnorton.github.io"
 
 # defaults:
 #  -
