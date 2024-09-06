@@ -206,6 +206,61 @@ $ComicSans: "Comic Sans MS", "Comic Sans", "Comic Neue", cursive, sans-serif;
     }
 }
 
+.listcircle {
+    ul {
+        list-style-type: circle;
+        list-style-position: outside;
+    }
+
+    li {
+        margin-left: .25in;
+    }
+}
+
+.listsquare {
+    ul {
+        list-style-type: square;
+        list-style-position: outside;
+    }
+
+    li {
+        margin-left: .25in;
+    }
+}
+
+.listtriangle {
+    ul {
+        list-style-type: "\u2023";
+        list-style-position: outside;
+    }
+
+    li {
+        margin-left: .25in;
+    }
+}
+
+.listhyphen {
+    ul {
+        list-style-type: "\u2043";
+        list-style-position: outside;
+    }
+
+    li {
+        margin-left: .25in;
+    }
+}
+
+.listdash {
+    ul {
+        list-style-type: "\u2014";
+        list-style-position: outside;
+    }
+
+    li {
+        margin-left: .25in;
+    }
+}
+
 // Short list style
 .listcolumns {
     .list { 
@@ -225,13 +280,8 @@ $ComicSans: "Comic Sans MS", "Comic Sans", "Comic Neue", cursive, sans-serif;
 
 .listinline {
     .list {
-        ul {
-            margin-left: .25in;
-            margin-right: .25in;
-        }
         li {
             display: inline;
-            font-style: italic;
             margin-left: 0;
         }
     }
