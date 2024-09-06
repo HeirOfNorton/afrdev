@@ -425,8 +425,11 @@ function makeDocxStyles (classlist) {
     } else if (classlist.contains('maingaramond')){
         defaultstyles.document.run.font = "Garamond";
     } else if (classlist.contains('mainpalatino')){
-        defaultstyles.document.run.font = "Palatino";
+        defaultstyles.document.run.font = "Palatino Linotype";
+    } else if (classlist.contains('maincomicsans')){
+        defaultstyles.document.run.font = "Comic Sans MS";
     }
+
 
     if (classlist.contains('headgeorgia')){
         defaultstyles.heading1.run.font = "Georgia";
@@ -485,11 +488,11 @@ function makeDocxStyles (classlist) {
             defaultstyles.title.run.font = "Garamond";
         }
     } else if (classlist.contains('headpalatino')){
-        defaultstyles.heading1.run.font = "Palatino";
-        defaultstyles.heading2.run.font = "Palatino";
-        defaultstyles.heading3.run.font = "Palatino";
+        defaultstyles.heading1.run.font = "Palatino Linotype";
+        defaultstyles.heading2.run.font = "Palatino Linotype";
+        defaultstyles.heading3.run.font = "Palatino Linotype";
         if (classlist.contains('topmatchdoc')) {
-            defaultstyles.title.run.font = "Palatino";
+            defaultstyles.title.run.font = "Palatino Linotype";
         }
     } else if (classlist.contains('headtimes')){
         defaultstyles.heading1.run.font = "Times New Roman";
@@ -499,11 +502,11 @@ function makeDocxStyles (classlist) {
             defaultstyles.title.run.font = "Times New Roman";
         }
     } else if (classlist.contains('headcopperplate')){
-        defaultstyles.heading1.run.font = "Copperplate";
-        defaultstyles.heading2.run.font = "Copperplate";
-        defaultstyles.heading3.run.font = "Copperplate";
+        defaultstyles.heading1.run.font = "Copperplate Gothic Light";
+        defaultstyles.heading2.run.font = "Copperplate Gothic Light";
+        defaultstyles.heading3.run.font = "Copperplate Gothic Light";
         if (classlist.contains('topmatchdoc')) {
-            defaultstyles.title.run.font = "Copperplate";
+            defaultstyles.title.run.font = "Copperplate Gothic Light";
         }
     } else if (classlist.contains('headpapyrus')){
         defaultstyles.heading1.run.font = "Papyrus";
@@ -512,7 +515,15 @@ function makeDocxStyles (classlist) {
         if (classlist.contains('topmatchdoc')) {
             defaultstyles.title.run.font = "Papyrus";
         }
+    } else if (classlist.contains('headcomicsans')){
+        defaultstyles.heading1.run.font = "Comic Sans MS";
+        defaultstyles.heading2.run.font = "Comic Sans MS";
+        defaultstyles.heading3.run.font = "Comic Sans MS";
+        if (classlist.contains('topmatchdoc')) {
+            defaultstyles.title.run.font = "Comic Sans MS";
+        }
     }
+
 
     if (classlist.contains('topgeorgia')) {
         defaultstyles.title.run.font = "Georgia";
@@ -539,18 +550,22 @@ function makeDocxStyles (classlist) {
         defaultstyles.title.run.font = "Garamond";
         address.run.font = "Garamond";
     } else if (classlist.contains('toppalatino')) {
-        defaultstyles.title.run.font = "Palatino";
-        address.run.font = "Palatino";
+        defaultstyles.title.run.font = "Palatino Linotype";
+        address.run.font = "Palatino Linotype";
     } else if (classlist.contains('toptimes')) {
         defaultstyles.title.run.font = "Times New Roman";
         address.run.font = "Times New Roman";
     } else if (classlist.contains('topcopperplate')) {
-        defaultstyles.title.run.font = "Copperplate";
-        address.run.font = "Copperplate";
+        defaultstyles.title.run.font = "Copperplate Gothic Light";
+        address.run.font = "Copperplate Gothic Light";
     } else if (classlist.contains('toppapyrus')) {
         defaultstyles.title.run.font = "Papyrus";
         address.run.font = "Papyrus";
+    } else if (classlist.contains('topcomicsans')) {
+        defaultstyles.title.run.font = "Comic Sans MS";
+        address.run.font = "Comic Sans MS";
     }
+
 
     if (classlist.contains('fontlarge')) {
         defaultstyles.document.run.size = 28;

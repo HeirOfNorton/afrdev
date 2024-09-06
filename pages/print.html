@@ -91,9 +91,10 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
             </div>
             {% endcomment %}
             <div x-show="opentab == 'fonts'">
-                {% assign mainfonts = "Georgia,Arial,Calibri,Tahoma,Book Antiqua,Garamond,Palatino,Times New Roman" | split: "," %}
-                {% assign headfonts = "Georgia,Arial,Arial Black,Calibri,Impact,Tahoma,Book Antiqua,Garamond,Palatino,Times New Roman,Copperplate,Papyrus" | split: "," %}
+                {% assign mainfonts = "Georgia *,Arial *,Calibri,Tahoma *,Book Antiqua,Garamond,Palatino,Times New Roman *,Comic Sans" | split: "," %}
+                {% assign headfonts = "Georgia *,Arial *,Arial Black *,Calibri,Impact,Tahoma *,Book Antiqua,Garamond,Palatino,Times New Roman *,Copperplate,Papyrus,Comic Sans" | split: "," %}
                 <h3 class="title is-3">Select fonts</h3>
+                <p class="block">Not all fonts are available on all systems. If you select a font and it looks wrong, you may not have that font installed on your device. We have marked fonts with an asterisk (*) that are safest to use and widely available.</p>
                 <div class="field">
                     <label class="label">
                         Main Body Font
@@ -101,7 +102,7 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
                     <div class="select">
                         <select name="mainfont" x-model="style.mainfont">
                             {% for font in mainfonts %}
-                            <option value="main{{ font | downcase | remove: ' ' | remove: 'newroman' }}" class="main{{ font | downcase | remove: ' ' | remove: 'newroman' }}">{{ font }}</option>
+                            <option value="main{{ font | downcase | remove: ' ' | remove: '*' | remove: 'newroman' }}" class="main{{ font | downcase | remove: ' ' | remove: '*' | remove: 'newroman' }}">{{ font }}</option>
                             {% endfor %}
                         </select>
                     </div>
@@ -113,7 +114,7 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
                     <div class="select">
                         <select name="headfont" x-model="style.headfont">
                             {% for font in headfonts %}
-                            <option value="head{{ font | downcase | remove: ' ' | remove: 'newroman' }}" class="head{{ font | downcase | remove: ' ' | remove: 'newroman' }}">{{ font }}</option>
+                            <option value="head{{ font | downcase | remove: ' ' | remove: '*' | remove: 'newroman' }}" class="main{{ font | downcase | remove: ' ' | remove: '*' | remove: 'newroman' }}">{{ font }}</option>
                             {% endfor %}
                         </select>
                     </div>
@@ -126,7 +127,7 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
                         <select name="topfont" x-model="style.topfont">
                             <option selected value="topmatchdoc">Use the Main Fonts of the Resume</option>
                             {% for font in headfonts %}
-                            <option value="top{{ font | downcase | remove: ' ' | remove: 'newroman' }}" class="top{{ font | downcase | remove: ' ' | remove: 'newroman' }}">{{ font }}</option>
+                            <option value="top{{ font | downcase | remove: ' ' | remove: 'newroman' }}" class="main{{ font | downcase | remove: ' ' | remove: 'newroman' }}">{{ font }}</option>
                             {% endfor %}
                         </select>
                     </div>
