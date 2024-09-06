@@ -46,6 +46,30 @@
     }
 }
 
+.fontsmall {
+    font-size: 10pt;
+
+    h1 {
+        font-size: 18pt;
+    }
+
+    h2 {
+        font-size: 14pt;
+    }
+}
+
+.fontlarge {
+    font-size: 14pt;
+
+    h1 {
+        font-size: 22pt;
+    }
+
+    h2 {
+        font-size: 18pt;
+    }
+}
+
 $Georgia: Georgia, 'Times New Roman', Times, serif;
 $Arial: Arial, Helvetica, sans-serif;
 $ArialBlack: "Arial Black", Arial Bold, Gadget, sans-serif;

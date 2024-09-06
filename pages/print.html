@@ -23,7 +23,7 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
             languages:      $persist(blankForm('Languages', false)).as('languages'),
         },
 
-        style: {
+        style: $persist({
             mainfont:   'maingeorgia',
             fontsize:   'fontmedium',
             headfont:   'headarial',
@@ -35,7 +35,7 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
             listbullet: 'listdisc',
             pagesize:   'pageletter',
             margin:     'mgmedium',
-        },
+        }).as('printstyles'),
 
         order:          $persist(resetOrder('standard')).as('order'),
 
@@ -77,8 +77,8 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
                 </div>
                 <h2 class="title is-3">Page Margins</h2>
                 <div class="buttons is-centered">
-                    <button class="button is-primary is-large has-text-weight-bold" :class="style.margin == 'mgmedium' || 'is-outlined'" @click="style.margin='mgmedium'" >Medium</button>
                     <button class="button is-primary is-large has-text-weight-bold" :class="style.margin == 'mgnarrow' || 'is-outlined'" @click="style.margin='mgnarrow'" >Narrow</button>
+                    <button class="button is-primary is-large has-text-weight-bold" :class="style.margin == 'mgmedium' || 'is-outlined'" @click="style.margin='mgmedium'" >Medium</button>
                     <button class="button is-primary is-large has-text-weight-bold" :class="style.margin == 'mgwide' || 'is-outlined'" @click="style.margin='mgwide'" >Wide</button>
                 </div>
             </div>
@@ -93,7 +93,7 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
             <div x-show="opentab == 'fonts'">
                 {% assign mainfonts = "Georgia,Arial,Calibri,Tahoma,Book Antiqua,Garamond,Palatino,Times New Roman" | split: "," %}
                 {% assign headfonts = "Georgia,Arial,Arial Black,Calibri,Impact,Tahoma,Book Antiqua,Garamond,Palatino,Times New Roman,Copperplate,Papyrus" | split: "," %}
-                <p>Select fonts and colors</p>
+                <h3 class="title is-3">Select fonts</h3>
                 <div class="field">
                     <label class="label">
                         Main Body Font
@@ -129,6 +129,16 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
                             <option value="top{{ font | downcase | remove: ' ' | remove: 'newroman' }}" class="top{{ font | downcase | remove: ' ' | remove: 'newroman' }}">{{ font }}</option>
                             {% endfor %}
                         </select>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">
+                        Font Sizes
+                    </label>
+                    <div class="buttons is-centered has-addons"></div>
+                        <button class="button is-primary is-medium" :class="style.fontsize == 'fontsmall' || 'is-outlined'" @click="style.fontsize='fontsmall'" >Small</button>
+                        <button class="button is-primary is-medium" :class="style.fontsize == 'fontmedium' || 'is-outlined'" @click="style.fontsize='fontmedium'" >Medium</button>
+                        <button class="button is-primary is-medium" :class="style.fontsize == 'fontlarge' || 'is-outlined'" @click="style.fontsize='fontlarge'" >Large</button>
                     </div>
                 </div>
             </div>
