@@ -215,6 +215,22 @@ $ComicSans: "Comic Sans MS", "Comic Sans", "Comic Neue", cursive, sans-serif;
     }
 }
 
+.liststandard {
+    .list {
+        ul {
+
+        }
+    }
+}
+
+.listinline {
+    .list {
+        li {
+            display: inline;
+            font-style: italic;
+        }
+    }
+}
 
 // Resets, page sizes and margins for the resume as a whole
 
