@@ -683,6 +683,11 @@ function makeDocxFlags (classlist) {
         flags.item_date_tab_right = true;
         flags.item_skip_subtitle = true;
     }
+    if (classlist.contains('subitemcolumns')) {
+        flags.subitemcolumns = 3;
+    } else if (classlist.contains('subiteminline')) {
+        flags.subiteminline = true;
+    }
 
     return flags;
 }
@@ -888,16 +893,32 @@ function makeDocxItems (stack, elem, flags) {
                             heading: docx.HeadingLevel.HEADING_3,
                         }));
                     }
-                    for (subitem of block.children[1].children) {
-                        if (subitem.nodeName === 'LI') {
-                            stack.add(new docx.Paragraph({
-                                text: subitem.innerText,
-                                numbering: {
-                                    reference: 'subitem',
-                                    level: 0,
-                                },
-                                style: 'ListParagraph',
-                            }));
+
+                    if (flags.subiteminline) {
+                        stack.add(new docx.Paragraph({
+                            text: block.children[1].innerText,
+                            style: 'InlineList',
+                        }));
+                    } else {
+                        if (flags.subitemcolumns) {
+                            stack.changeColumns(flags.listcolumns);
+                        }
+
+                        for (subitem of block.children[1].children) {
+                            if (subitem.nodeName === 'LI') {
+                                stack.add(new docx.Paragraph({
+                                    text: subitem.innerText,
+                                    numbering: {
+                                        reference: 'subitem',
+                                        level: 0,
+                                    },
+                                    style: 'ListParagraph',
+                                }));
+                            }
+                        }
+
+                        if (flags.subitemcolumns) {
+                            stack.changeColumns(1);
                         }
                     }
                 }

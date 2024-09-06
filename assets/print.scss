@@ -179,15 +179,6 @@ $ComicSans: "Comic Sans MS", "Comic Sans", "Comic Neue", cursive, sans-serif;
         }
 
         .subitems {
-            //ul {
-            //    list-style-type: disc;
-            //    list-style-position: outside;
-            //}
-
-            //li {
-            //    margin-left: 2em;
-            //}
-
             h4 {
                 display: none;
             }
@@ -280,6 +271,31 @@ $ComicSans: "Comic Sans MS", "Comic Sans", "Comic Neue", cursive, sans-serif;
 
 .listinline {
     .list {
+        li {
+            display: inline;
+            margin-left: 0;
+        }
+    }
+}
+
+.subitemcolumns {
+    .subitems { 
+        ul {
+            columns: 3;
+        }
+    }
+}
+
+.subitemstandard {
+    .subitems {
+        ul {
+
+        }
+    }
+}
+
+.subiteminline {
+    .subitems {
         li {
             display: inline;
             margin-left: 0;
