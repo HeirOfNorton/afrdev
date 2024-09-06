@@ -365,7 +365,7 @@ function makeDocxStyles (classlist) {
         next: 'Normal',
         quickStyle: true,
         run: {
-            italics: true;
+            italics: true,
         },
         paragraph: {
             indent: {
