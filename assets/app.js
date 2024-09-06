@@ -338,16 +338,6 @@ function makeDocxStyles (classlist) {
         paragraph: {},
 
     };
-    const listitem = {
-        id: 'ListItem',
-        name: 'List Item',
-        basedOn: 'ListParagraph',
-        next: 'ListItem',
-        quickStyle: true,
-        run: {},
-        paragraph: {},
-
-    };
     const item_org = {
         id: 'Organization',
         name: 'Organization',
@@ -368,14 +358,21 @@ function makeDocxStyles (classlist) {
         paragraph: {},
 
     };
-    const item_subitem = {
-        id: 'SubItem',
-        name: 'Sub Item',
-        basedOn: 'List Paragraph',
-        next: 'SubItem',
+    const inlinelist = {
+        id: 'InlineList',
+        name: 'Inline List',
+        basedOn: 'Normal',
+        next: 'Normal',
         quickStyle: true,
-        run: {},
-        paragraph: {},
+        run: {
+            italics: true;
+        },
+        paragraph: {
+            indent: {
+                left: docx.convertInchesToTwip(0.25),
+                right: docx.convertInchesToTwip(0.25),
+            }
+        },
 
     };
 
@@ -409,7 +406,7 @@ function makeDocxStyles (classlist) {
         }],
     };
 
-    const parastyles = [address, summary, item_org, listitem, item_subitem];
+    const parastyles = [address, summary, item_org, inlinelist];
     const runstyles = [];
 
     if (classlist.contains('maingeorgia')){
@@ -602,7 +599,7 @@ function makeDocxStyles (classlist) {
         subitem_numbering.levels[0].text = "\u25CF";
     }
     
-    if (classlist.contains('listcolumns')) {
+    if (classlist.contains('listinline')) {
 
     } else {
 
@@ -670,6 +667,8 @@ function makeDocxFlags (classlist) {
     }
     if (classlist.contains('listcolumns')) {
         flags.listcolumns = 3;
+    } else if (classlist.contains('listinline')) {
+        flags.listinline = true;
     }
     if (classlist.contains('itemstandard')) {
         flags.item_org_run_together = true;
@@ -775,25 +774,32 @@ function makeDocxList (stack, elem, flags) {
         heading: docx.HeadingLevel.HEADING_1,
     }));
 
-    if (flags.listcolumns) {
-        stack.changeColumns(flags.listcolumns);
-    }
-
-    for (li of elem.children[1].children) {
-        if (li.nodeName === 'LI') {
-            stack.add(new docx.Paragraph({
-                text: li.innerText,
-                numbering: {
-                    reference: 'list-item',
-                    level: 0,
-                },
-                style: 'ListItem',
-            }));
+    if (flags.listinline) {
+        stack.add(new docx.Paragraph({
+            text: elem.children[1].innerText,
+            style: 'InlineList',
+        }));
+    } else {
+        if (flags.listcolumns) {
+            stack.changeColumns(flags.listcolumns);
         }
-    }
 
-    if (flags.listcolumns) {
-        stack.changeColumns(1);
+        for (li of elem.children[1].children) {
+            if (li.nodeName === 'LI') {
+                stack.add(new docx.Paragraph({
+                    text: li.innerText,
+                    numbering: {
+                        reference: 'list-item',
+                        level: 0,
+                    },
+                    style: 'ListParagraph',
+                }));
+            }
+        }
+
+        if (flags.listcolumns) {
+            stack.changeColumns(1);
+        }
     }
 }
 
@@ -882,7 +888,7 @@ function makeDocxItems (stack, elem, flags) {
                                     reference: 'subitem',
                                     level: 0,
                                 },
-                                style: 'SubItem',
+                                style: 'ListParagraph',
                             }));
                         }
                     }
