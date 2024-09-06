@@ -24,17 +24,18 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
         },
 
         style: $persist({
-            mainfont:   'maingeorgia',
-            fontsize:   'fontmedium',
-            headfont:   'headarial',
-            topfont:    'topmatchdoc',
-            topstyle:   'topcenter',
-            headstyle:  'headunderline',
-            itemstyle:  'itemstandard',
-            liststyle:  'listcolumns',
-            listbullet: 'listdisc',
-            pagesize:   'pageletter',
-            margin:     'mgmedium',
+            mainfont:     'maingeorgia',
+            fontsize:     'fontmedium',
+            headfont:     'headarial',
+            topfont:      'topmatchdoc',
+            topstyle:     'topcenter',
+            headstyle:    'headunderline',
+            itemstyle:    'itemstandard',
+            subitemstyle: 'subitemstandard',
+            liststyle:    'listcolumns',
+            listbullet:   'listdisc',
+            pagesize:     'pageletter',
+            margin:       'mgmedium',
         }).as('printstyles'),
 
         order:          $persist(resetOrder('standard')).as('order'),
@@ -84,10 +85,26 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
             </div>
             <div x-show="opentab == 'lists'">
                 <h2 class="title is-3">List Styles</h2>
+                <h3 class="subtitle is-4">Standalone Lists</h3>
                 <div class="buttons is-centered">
                     <button class="button is-primary is-large has-text-weight-bold" :class="style.liststyle == 'liststandard' || 'is-outlined'" @click="style.liststyle='liststandard'" >Standard</button>
                     <button class="button is-primary is-large has-text-weight-bold" :class="style.liststyle == 'listcolumns' || 'is-outlined'" @click="style.liststyle='listcolumns'" >Columns</button>
                     <button class="button is-primary is-large has-text-weight-bold" :class="style.liststyle == 'listinline' || 'is-outlined'" @click="style.liststyle='listinline'" >Inline</button>
+                </div>
+                <h3 class="subtitle is-3">Accomplishment Lists</h3>
+                <div class="buttons is-centered">
+                    <button class="button is-primary is-large has-text-weight-bold" :class="style.subitemstyle == 'subitemstandard' || 'is-outlined'" @click="style.subitemstyle='subitemstandard'" >Standard</button>
+                    <button class="button is-primary is-large has-text-weight-bold" :class="style.subitemstyle == 'subitemcolumns' || 'is-outlined'" @click="style.subitemstyle='subitemcolumns'" >Columns</button>
+                    <button class="button is-primary is-large has-text-weight-bold" :class="style.subitemstyle == 'subiteminline' || 'is-outlined'" @click="style.subitemstyle='subiteminline'" >Inline</button>
+                </div>
+                <h3 class="subtitle is-3">Bullet Markers</h3>
+                <div class="buttons is-centered">
+                    <button class="button is-primary is-large has-text-weight-bold" :class="style.listbullet == 'listdisc' || 'is-outlined'" @click="style.listbullet='listdisc'" >( &#9679; ) Filled Circle</button>
+                    <button class="button is-primary is-large has-text-weight-bold" :class="style.listbullet == 'listcircle' || 'is-outlined'" @click="style.listbullet='listcircle'" >( &#9675; ) Open Circle</button>
+                    <button class="button is-primary is-large has-text-weight-bold" :class="style.listbullet == 'listsquare' || 'is-outlined'" @click="style.listbullet='listsquare'" >( &#9632; ) Square</button>
+                    <button class="button is-primary is-large has-text-weight-bold" :class="style.listbullet == 'listtriangle' || 'is-outlined'" @click="style.listbullet='listtriangle'" >( &#8227; ) Triangle</button>
+                    <button class="button is-primary is-large has-text-weight-bold" :class="style.listbullet == 'listhyphen' || 'is-outlined'" @click="style.listbullet='listhyphen'" >( &#8259; ) Hyphen</button>
+                    <button class="button is-primary is-large has-text-weight-bold" :class="style.listbullet == 'listdash' || 'is-outlined'" @click="style.listbullet='listdash'" >( &#8212; ) Dash</button>
                 </div>
             </div>
             <div x-show="opentab == 'fonts'">
@@ -255,8 +272,8 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
                                             <div class="subitems">
                                                 <h4 x-text="current.subtitle"></h4>
                                                 <ul>
-                                                    <template x-for="subitem in item.subitems">
-                                                        <li x-text="subitem"></li>
+                                                    <template x-for="(subitem, index) in item.subitems">
+                                                        <li x-text="subitem + (style.subitemstyle === 'subiteminline' && index < item.subitems.length -1 ? ', ' : '')"></li>
                                                     </template>
                                                 </ul>
                                             </div>

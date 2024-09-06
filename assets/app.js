@@ -364,15 +364,8 @@ function makeDocxStyles (classlist) {
         basedOn: 'Normal',
         next: 'Normal',
         quickStyle: true,
-        run: {
-            italics: true,
-        },
-        paragraph: {
-            indent: {
-                left: docx.convertInchesToTwip(0.25),
-                right: docx.convertInchesToTwip(0.25),
-            }
-        },
+        run: { },
+        paragraph: { },
 
     };
 
@@ -597,6 +590,21 @@ function makeDocxStyles (classlist) {
     if (classlist.contains('listdisc')) {
         list_numbering.levels[0].text = "\u25CF";
         subitem_numbering.levels[0].text = "\u25CF";
+    } else if (classlist.contains('listcircle')) {
+        list_numbering.levels[0].text = "\u25CB";
+        subitem_numbering.levels[0].text = "\u25CB";
+    } else if (classlist.contains('listsquare')) {
+        list_numbering.levels[0].text = "\u25A0";
+        subitem_numbering.levels[0].text = "\u25A0";
+    } else if (classlist.contains('listtriangle')) {
+        list_numbering.levels[0].text = "\u2023";
+        subitem_numbering.levels[0].text = "\u2023";
+    } else if (classlist.contains('listhyphen')) {
+        list_numbering.levels[0].text = "\u2043";
+        subitem_numbering.levels[0].text = "\u2043";
+    } else if (classlist.contains('listdash')) {
+        list_numbering.levels[0].text = "\u2014";
+        subitem_numbering.levels[0].text = "\u2014";
     }
     
     if (classlist.contains('listinline')) {
