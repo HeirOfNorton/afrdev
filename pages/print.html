@@ -82,7 +82,7 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
                     <button class="button is-primary is-large has-text-weight-bold" :class="style.margin == 'mgwide' || 'is-outlined'" @click="style.margin='mgwide'" >Wide</button>
                 </div>
             </div>
-            <div x-show="opentab == 'lists'"></div>
+            <div x-show="opentab == 'lists'">
                 <h2 class="title is-3">List Styles</h2>
                 <div class="buttons is-centered">
                     <button class="button is-primary is-large has-text-weight-bold" :class="style.liststyle == 'liststandard' || 'is-outlined'" @click="style.liststyle='liststandard'" >Standard</button>
