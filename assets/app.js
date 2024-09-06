@@ -901,7 +901,7 @@ function makeDocxItems (stack, elem, flags) {
                         }));
                     } else {
                         if (flags.subitemcolumns) {
-                            stack.changeColumns(flags.listcolumns);
+                            stack.changeColumns(flags.subitemcolumns);
                         }
 
                         for (subitem of block.children[1].children) {
