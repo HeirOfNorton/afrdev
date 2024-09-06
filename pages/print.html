@@ -27,7 +27,7 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
             mainfont:   'maingeorgia',
             fontsize:   'fontmedium',
             headfont:   'headarial',
-            topfont:    'toparialblack',
+            topfont:    'topmatchdoc',
             topstyle:   'topcenter',
             headstyle:  'headunderline',
             itemstyle:  'itemstandard',
@@ -125,7 +125,7 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
                     <div class="select">
                         <select name="topfont" x-model="style.topfont">
                             <option selected value="topmatchdoc">Use the Main Fonts of the Resume</option>
-                            {% for font in topfonts %}
+                            {% for font in headfonts %}
                             <option value="top{{ font | downcase | remove: ' ' | remove: 'newroman' }}" class="top{{ font | downcase | remove: ' ' | remove: 'newroman' }}">{{ font }}</option>
                             {% endfor %}
                         </select>
