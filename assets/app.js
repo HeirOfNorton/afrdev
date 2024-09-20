@@ -580,12 +580,41 @@ function makeDocxStyles (classlist) {
 
     }
 
-    if (classlist.contains('headunderline')) {
+    if (classlist.contains('headbold')) {
+        defaultstyles.heading1.run.bold = true;
+    } else if (classlist.contains('headitalic')) {
+        defaultstyles.heading1.run.italics = true;
+    } else if (classlist.contains('headbolditalic')) {
+        defaultstyles.heading1.run.bold = true;
+        defaultstyles.heading1.run.italics = true;
+    } else if (classlist.contains('headunderline')) {
+        defaultstyles.heading1.run.underline = {};
+    } else if (classlist.contains('headboldunderline')) {
         defaultstyles.heading1.run.bold = true;
         defaultstyles.heading1.run.underline = {};
-    } else {
-
+    } else if (classlist.contains('headallcaps')) {
+        defaultstyles.heading1.run.allCaps = true;
+    } else if (classlist.contains('headboldallcaps')) {
+        defaultstyles.heading1.run.bold = true;
+        defaultstyles.heading1.run.allCaps = true;
+    } else if (classlist.contains('headsmallcaps')) {
+        defaultstyles.heading1.run.smallCaps = true;
+    } else if (classlist.contains('headboldsmallcaps')) {
+        defaultstyles.heading1.run.bold = true;
+        defaultstyles.heading1.run.smallCaps = true;
+    } else /* headnormal */ {
     }
+
+    if (classlist.contains('headleft')) {
+        defaultstyles.heading1.paragraph.alignment = docx.AlignmentType.LEFT;
+    } else if (classlist.contains('headcenter')) {
+        defaultstyles.heading1.paragraph.alignment = docx.AlignmentType.CENTER;
+    } else if (classlist.contains('headright')) {
+        defaultstyles.heading1.paragraph.alignment = docx.AlignmentType.RIGHT;
+    } else if (classlist.contains('headindented')) {
+        defaultstyles.heading1.paragraph.alignment = docx.AlignmentType.LEFT;
+        defaultstyles.heading1.paragraph.indent = {left: '1.5in'};
+    } 
 
     if (classlist.contains('listdisc')) {
         list_numbering.levels[0].text = "\u25CF";
