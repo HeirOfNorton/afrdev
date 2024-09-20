@@ -682,17 +682,14 @@ function makeDocxStyles (classlist) {
             color: 'auto',
             fill: 'D3D3D3',
         };
-        if (classlist.contains('headleft')) {
+        if (classlist.contains('headleft') || classlist.contains('headright')) {
             defaultstyles.heading1.paragraph.border = {
                 left: {
                     color: 'D3D3D3',
                     space: 3,
                     style: 'single',
                     size: 1,
-                }
-            };
-        } else if (classlist.contains('headright')) {
-            defaultstyles.heading1.paragraph.border = {
+                },
                 right: {
                     color: 'D3D3D3',
                     space: 3,
@@ -709,17 +706,14 @@ function makeDocxStyles (classlist) {
             fill: '808080',
         };
         defaultstyles.heading1.run.color = 'FFFFFF';
-        if (classlist.contains('headleft')) {
+        if (classlist.contains('headleft') || classlist.contains('headright')) {
             defaultstyles.heading1.paragraph.border = {
                 left: {
                     color: '808080',
                     space: 3,
                     style: 'single',
                     size: 1,
-                }
-            };
-        } else if (classlist.contains('headright')) {
-            defaultstyles.heading1.paragraph.border = {
+                },
                 right: {
                     color: '808080',
                     space: 3,
@@ -736,17 +730,14 @@ function makeDocxStyles (classlist) {
             fill: '000000',
         };
         defaultstyles.heading1.run.color = 'FFFFFF';
-        if (classlist.contains('headleft')) {
+        if (classlist.contains('headleft') || classlist.contains('headright')) {
             defaultstyles.heading1.paragraph.border = {
                 left: {
                     color: '000000',
                     space: 3,
                     style: 'single',
                     size: 1,
-                }
-            };
-        } else if (classlist.contains('headright')) {
-            defaultstyles.heading1.paragraph.border = {
+                },
                 right: {
                     color: '000000',
                     space: 3,
