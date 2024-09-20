@@ -685,7 +685,7 @@ function makeDocxStyles (classlist) {
         if (classlist.contains('headleft')) {
             defaultstyles.heading1.paragraph.border = {
                 left: {
-                    color: 'D3D3D3'
+                    color: 'D3D3D3',
                     space: 3,
                     style: 'single',
                     size: 1,
@@ -694,7 +694,7 @@ function makeDocxStyles (classlist) {
         } else if (classlist.contains('headright')) {
             defaultstyles.heading1.paragraph.border = {
                 right: {
-                    color: 'D3D3D3'
+                    color: 'D3D3D3',
                     space: 3,
                     style: 'single',
                     size: 1,
@@ -712,7 +712,7 @@ function makeDocxStyles (classlist) {
         if (classlist.contains('headleft')) {
             defaultstyles.heading1.paragraph.border = {
                 left: {
-                    color: '808080'
+                    color: '808080',
                     space: 3,
                     style: 'single',
                     size: 1,
@@ -721,7 +721,7 @@ function makeDocxStyles (classlist) {
         } else if (classlist.contains('headright')) {
             defaultstyles.heading1.paragraph.border = {
                 right: {
-                    color: '808080'
+                    color: '808080',
                     space: 3,
                     style: 'single',
                     size: 1,
@@ -739,7 +739,7 @@ function makeDocxStyles (classlist) {
         if (classlist.contains('headleft')) {
             defaultstyles.heading1.paragraph.border = {
                 left: {
-                    color: '000000'
+                    color: '000000',
                     space: 3,
                     style: 'single',
                     size: 1,
@@ -748,7 +748,7 @@ function makeDocxStyles (classlist) {
         } else if (classlist.contains('headright')) {
             defaultstyles.heading1.paragraph.border = {
                 right: {
-                    color: '000000'
+                    color: '000000',
                     space: 3,
                     style: 'single',
                     size: 1,
