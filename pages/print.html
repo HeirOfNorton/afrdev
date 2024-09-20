@@ -170,7 +170,7 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
                 <div class="fixed-grid">
                     <div class="grid">
                         {% for style in headstyles %}
-                            {% assign cls = "head" + style | downcase | remove: ' ' %}
+                            {% assign cls = "head" | append: style | downcase | remove: ' ' %}
                             <button class="button is-primary is-medium has-text-weight-bold" :class="style.headstyle == '{{ cls }}' || 'is-outlined'" @click="style.headstyle='{{ cls }}'" >{{ style }}</button>
                         {% endfor %}
                     </div>
@@ -178,7 +178,7 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
                 <h3 class="subtitle is-3">Alignment</h3>
                 <div class="buttons is-centered">
                     {% for style in headaligns %}
-                        {% assign cls = "head" + style | downcase | remove: ' ' %}
+                        {% assign cls = "head" | append: style | downcase | remove: ' ' %}
                         <button class="button is-primary is-medium has-text-weight-bold" :class="style.headalign == '{{ cls }}' || 'is-outlined'" @click="style.headalign='{{ cls }}'" >{{ style }}</button>
                     {% endfor %}
                 </div>
@@ -186,7 +186,7 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
                 <div class="fixed-grid">
                     <div class="grid">
                         {% for style in headboxes %}
-                            {% assign cls = "head" + style | downcase | remove: ' ' %}
+                            {% assign cls = "head" | append: style | downcase | remove: ' ' %}
                             <button class="button is-primary is-medium has-text-weight-bold" :class="style.headbox == '{{ cls }}' || 'is-outlined'" @click="style.headbox='{{ cls }}'" >{{ style }}</button>
                         {% endfor %}
                     </div>
