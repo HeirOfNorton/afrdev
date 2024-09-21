@@ -160,7 +160,7 @@ $ComicSans: "Comic Sans MS", "Comic Sans", "Comic Neue", cursive, sans-serif;
 }
 
 .topblock {
-    .addressline {
+    .addressline, .phone, .email, .website {
         display: block;
     }
 }
@@ -170,6 +170,9 @@ $ComicSans: "Comic Sans MS", "Comic Sans", "Comic Neue", cursive, sans-serif;
 }
 
 .topinline {
+    .address, .communication {
+        display: inline;
+    }
 
 }
 
