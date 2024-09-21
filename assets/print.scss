@@ -127,22 +127,45 @@ $ComicSans: "Comic Sans MS", "Comic Sans", "Comic Neue", cursive, sans-serif;
 // Metadata style
 
 .topcenter {
-    .address, .communication, .contact h1 {
+    .address-block, .contact h1 {
         text-align: center;
     }
+}
 
-    .contact h1 {
-        margin-block-end: 6pt;
+.topleft {
+    .address-block, .contact h1 {
+        text-align: left;
+    }
+}
+
+.topright {
+    .address-block, .contact h1 {
+        text-align: right;
+    }
+}
+
+.topsplit {
+    .contact {
+        display: flex;
+        flex-direction: row;
+
+        h1 {
+            flex: 0 0 40%;
+            text-align: left;
+        }
     }
 
-    //.contact .address span:not(:last-of-type)::after {
-    //    content: ", ";
-    //}
-
-    //.contact .communication span:not(:last-of-type)::after {
-    //    content: " | ";
-    //}
+    .address-block {
+        flex-grow: 1;
+        text-align: right;
+    }
 }
+
+
+//    .contact h1 {
+//        margin-block-end: 6pt;
+//    }
+
 
 // Heading style
 
