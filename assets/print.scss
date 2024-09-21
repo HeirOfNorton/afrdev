@@ -31,6 +31,10 @@
         break-inside: avoid-page;
         page-break-inside: avoid;
     }
+
+    .addressline {
+        white-space: nowrap;
+    }
 }
 
 // font sizes

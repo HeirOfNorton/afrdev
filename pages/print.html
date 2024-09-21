@@ -243,10 +243,10 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
                                 <div class="address-block">
                                     <p class="address">
                                         <template x-if="current.address.line1">
-                                            <span class="addressline" x-text="current.address.line1 + (style.topstyle === ('toplines' || 'topinline') && (current.address.line2 || current.address.city || current.address.state || current.address.zip) ? ', ' : '') "></span>
+                                            <span class="addressline" x-text="current.address.line1 + ((style.topstyle === 'toplines' || style.topstyle === 'topinline') && (current.address.line2 || current.address.city || current.address.state || current.address.zip) ? ', ' : '') "></span>
                                         </template>
                                         <template x-if="current.address.line2">
-                                            <span class="addressline" x-text="current.address.line2 + (style.topstyle === ('toplines' || 'topinline') && (current.address.city || current.address.state || current.address.zip) ? ', ' : '')"></span>
+                                            <span class="addressline" x-text="current.address.line2 + ((style.topstyle === 'toplines' || style.topstyle === 'topinline') && (current.address.city || current.address.state || current.address.zip) ? ', ' : '')"></span>
                                         </template>
                                         <template x-if="current.address.city || current.address.state || current.address.zip">
                                             <span class="addressline">
@@ -265,10 +265,10 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
                                     <template x-if="style.topstyle === 'topinline'"><span> | </span></template>
                                     <p class="communication">
                                         <template x-if="current.phone">
-                                            <span class="phone" x-text="current.phone + (style.topstyle === ('toplines' || 'topinline') && (current.email || current.website) ? ' | ' : '')"></span>
+                                            <span class="phone" x-text="current.phone + ((style.topstyle === 'toplines' || style.topstyle === 'topinline') && (current.email || current.website) ? ' | ' : '')"></span>
                                         </template>
                                         <template x-if="current.email">
-                                            <span class="email" x-text="current.email + (style.topstyle === ('toplines' || 'topinline') && current.website ? ' | ' : '')"></span>
+                                            <span class="email" x-text="current.email + ((style.topstyle === 'toplines' || style.topstyle === 'topinline') && current.website ? ' | ' : '')"></span>
                                         </template>
                                         <template x-if="current.website">
                                             <span class="website" x-text="current.website"></span>
