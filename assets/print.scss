@@ -187,6 +187,13 @@ $ComicSans: "Comic Sans MS", "Comic Sans", "Comic Neue", cursive, sans-serif;
         flex-direction: row;
         justify-content: space-between;
         align-items: top;
+        gap: 16pt;
+    }
+    .address {
+        text-align: left;
+    }
+    .communication {
+        text-align: right;
     }
     .addressline, .phone, .email, .website {
         display: block;
