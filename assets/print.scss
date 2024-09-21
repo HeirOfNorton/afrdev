@@ -31,12 +31,6 @@
         break-inside: avoid-page;
         page-break-inside: avoid;
     }
-
-    .contact::after {
-        clear: both;
-        content: "";
-        display: table;
-    }
 }
 
 // font sizes
@@ -148,19 +142,40 @@ $ComicSans: "Comic Sans MS", "Comic Sans", "Comic Neue", cursive, sans-serif;
     .contact {
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12pt;
 
         h1 {
-            flex: 0 0 40%;
             text-align: left;
+            width: min-content;
+            line-height: 1 !important;
         }
     }
 
     .address-block {
-        flex-grow: 1;
+        margin-left: auto;
         text-align: right;
     }
 }
 
+.topblock {
+    .addressline {
+        display: block;
+    }
+}
+
+.toplines {
+
+}
+
+.topinline {
+
+}
+
+.topcolumns {
+
+}
 
 //    .contact h1 {
 //        margin-block-end: 6pt;
