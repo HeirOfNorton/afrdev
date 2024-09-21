@@ -581,21 +581,19 @@ function makeDocxStyles (classlist) {
         defaultstyles.title.paragraph.alignment = 'right';
         address.paragraph.alignment = 'right';
     } else /* topsplit */ {
-
+        defaultstyles.title.paragraph.alignment = 'left';
+        if (!classlist.contains('topcolumns')) {
+            address.paragraph.alignment = 'right';
+        }
     }
 
-    if (classlist.contains('topblock')) {
-
-    } else if (classlist.contains('toplines')) {
-
-    } else if (classlist.contains('topinline')) {
-
-    } else /* topcolumns */ {
-
+    if (classlist.contains('topcolumns')) {
+        address.paragraph.alignment = 'left';
+        address.paragraph.tabStops = [{
+            type: docx.TabStopType.RIGHT,
+            position: docx.TabStopPosition.MAX,
+        }];
     }
-
-
-
 
     if (classlist.contains('headbold')) {
         defaultstyles.heading1.run.bold = true;
@@ -964,15 +962,47 @@ function makeDocxContacts (stack, elem, flags) {
             }
         }
     }
+    var combopars = [];
+    for (var i = 0; i < Math.max(leftpars.length, rightpars.length); i++) {
+        var txt = "";
+        if (i in leftpars) {
+            txt = leftpars[i];
+        }
+        if (i in rightpars) {
+            txt = txt + "\t" + rightpars[i];
+        }
+        combopars.push(new docx.Paragraph({
+            text: txt,
+            style: 'Address',
+        }));
+    }
+    
     if (flags.contact_columns) {
-
+        stack.add(new docx.Table({
+            width: {
+                type: docx.WidthType.DXA,
+                size: flags.pagesize.width - (2 * flags.margin),
+            },
+            rows: [
+                new docx.TableRow({
+                    children: [
+                        new docx.TableCell({
+                        //    width: {},
+                            verticalAlign: docx.VerticalAlign.CENTER,
+                            children: [namepar],
+                        }),
+                        new docx.TableCell({
+                        //    width: {},
+                            verticalAlign: docx.VerticalAlign.CENTER,
+                            children: combopars,
+                        })
+                    ]
+                })
+            ]
+        }));
     } else {
         stack.add(namepar);
-        if (flags.address_columns) {
-
-        } else {
-            stack.add(leftpars);
-        }
+        stack.add(combopars);
     }
     return fullname;
 }
