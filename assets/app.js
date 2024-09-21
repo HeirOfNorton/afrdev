@@ -573,12 +573,29 @@ function makeDocxStyles (classlist) {
 
     if (classlist.contains('topcenter')) {
         defaultstyles.title.paragraph.alignment = 'center';
-        defaultstyles.title.paragraph.spacing = {after: 120};
         address.paragraph.alignment = 'center';
-
-    } else {
+    } else if (classlist.contains('topleft')) {
+        defaultstyles.title.paragraph.alignment = 'left';
+        address.paragraph.alignment = 'left';
+    } else if (classlist.contains('topright')) {
+        defaultstyles.title.paragraph.alignment = 'right';
+        address.paragraph.alignment = 'right';
+    } else /* topsplit */ {
 
     }
+
+    if (classlist.contains('topblock')) {
+
+    } else if (classlist.contains('toplines')) {
+
+    } else if (classlist.contains('topinline')) {
+
+    } else /* topcolumns */ {
+
+    }
+
+
+
 
     if (classlist.contains('headbold')) {
         defaultstyles.heading1.run.bold = true;
@@ -832,9 +849,19 @@ function makeDocxFlags (classlist) {
             flags.margin = 1361;
         }
     }
-    if ( classlist.contains('topcenter')) {
+    if ( classlist.contains('toplines')) {
+        flags.run_address_lines_together = true;
+    }
+    if (classlist.contains('topinline')) {
         flags.run_address_together = true;
     }
+    if (classlist.contains('topcolumns')) {
+        flags.address_columns = true;
+    }
+    if (classlist.contains('topsplit')) {
+        flags.contact_columns = true;
+    }
+
     if (classlist.contains('listcolumns')) {
         flags.listcolumns = 3;
     } else if (classlist.contains('listinline')) {
@@ -904,29 +931,47 @@ function makeDocxStack (pgsize, margins) {
 
 function makeDocxContacts (stack, elem, flags) {
     var fullname;
+    var namepar;
+    var leftpars = [];
+    var rightpars = [];
     for (e of elem.children) {
         if (e.classList.contains('fullname')) {
             fullname = e.innerText;
-            stack.add(new docx.Paragraph({
+            namepar = new docx.Paragraph({
                 text: fullname,
                 heading: docx.HeadingLevel.TITLE,
-            }));
-        } else {
+            });
+        } else /* address-block */ {
             if (flags.run_address_together) {
-                stack.add(new docx.Paragraph({
-                    text: e.innerText,
-                    style: 'Address',
-                }));
+                leftpars.push(e.innerText);
             } else {
-                for (child of e.children) {
-                    if (child,nodeName === "SPAN") {
-                        stack.add(new docx.Paragraph({
-                            text: child.innerText,
-                            style: 'Address',
-                        }));
+                for (par of e.children) {
+                    if (flags.run_address_lines_together) {
+                        leftpars.push(par.innerText);
+                    } else {
+                        for (child of par.children) {
+                            if (child.nodeName === "SPAN") {
+                                var inner = child.innerText;
+                                if (flags.address_columns && par.classList.contains('communication')) {
+                                    rightpars.push(inner);
+                                } else {
+                                    leftpars.push(inner);
+                                }
+                            }
+                        }
                     }
                 }
             }
+        }
+    }
+    if (flags.contact_columns) {
+
+    } else {
+        stack.add(namepar);
+        if (flags.address_columns) {
+
+        } else {
+            stack.add(leftpars);
         }
     }
     return fullname;
