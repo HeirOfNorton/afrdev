@@ -559,15 +559,15 @@ function makeDocxStyles (classlist) {
 
     if (classlist.contains('fontlarge')) {
         defaultstyles.document.run.size = 28;
-        defaultstyles.title.run.size = 44;
+        defaultstyles.title.run.size = 68;
         defaultstyles.heading1.run.size = 36;
     } else if (classlist.contains('fontsmall')) {
         defaultstyles.document.run.size = 20;
-        defaultstyles.title.run.size = 36;
+        defaultstyles.title.run.size = 56;
         defaultstyles.heading1.run.size = 28;
     } else /* fontmedium */ {
         defaultstyles.document.run.size = 24;
-        defaultstyles.title.run.size = 40;
+        defaultstyles.title.run.size = 80;
         defaultstyles.heading1.run.size = 32;
     }
 

@@ -131,6 +131,7 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
                     </label>
                     <div class="select">
                         <select name="headfont" x-model="style.headfont">
+                            <option value="headmatchmain" :class="style.mainfont">Match Main Font</option>
                             {% for font in headfonts %}
                             <option value="head{{ font | downcase | remove: ' ' | remove: '*' | remove: 'newroman' }}" class="main{{ font | downcase | remove: ' ' | remove: '*' | remove: 'newroman' }}">{{ font }}</option>
                             {% endfor %}

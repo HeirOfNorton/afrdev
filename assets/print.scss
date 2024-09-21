@@ -31,6 +31,12 @@
         break-inside: avoid-page;
         page-break-inside: avoid;
     }
+
+    .contact::after {
+        clear: both;
+        content: "";
+        display: table;
+    }
 }
 
 // font sizes
@@ -38,7 +44,7 @@
     font-size: 12pt;
 
     h1 {
-        font-size: 20pt;
+        font-size: 34pt;
     }
 
     h2 {
@@ -50,7 +56,7 @@
     font-size: 10pt;
 
     h1 {
-        font-size: 18pt;
+        font-size: 28pt;
     }
 
     h2 {
@@ -62,7 +68,7 @@
     font-size: 14pt;
 
     h1 {
-        font-size: 22pt;
+        font-size: 40pt;
     }
 
     h2 {
