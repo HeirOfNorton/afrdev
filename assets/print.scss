@@ -32,7 +32,7 @@
         page-break-inside: avoid;
     }
 
-    .addressline {
+    .addressline, .phone, .email, .website {
         white-space: nowrap;
     }
 }
@@ -153,6 +153,7 @@ $ComicSans: "Comic Sans MS", "Comic Sans", "Comic Neue", cursive, sans-serif;
         h1 {
             text-align: left;
             width: min-content;
+            min-width: 30%;
             line-height: 1 !important;
         }
     }
@@ -181,7 +182,15 @@ $ComicSans: "Comic Sans MS", "Comic Sans", "Comic Neue", cursive, sans-serif;
 }
 
 .topcolumns {
-
+    .address-block {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: top;
+    }
+    .addressline, .phone, .email, .website {
+        display: block;
+    }
 }
 
 //    .contact h1 {
