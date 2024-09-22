@@ -253,6 +253,27 @@ document.addEventListener('alpine:init', () => {
 });
 
 function makeDocxStyles (classlist) {
+    var pagewidth, pgmargin;
+    if (classlist.contains('pageletter')) {
+        pagewidth = 12240;
+        if (classlist.contains('mgmedium')) {
+            pgmargin = 1080;
+        } else if (classlist.contains('mgnarrow')) {
+            pgmargin = 720;
+        } else /* mgwide */ {
+            pgmargin = 1440;
+        }
+    } else /* pagea4 */ {
+        pagewidth = 11906;
+        if (classlist.contains('mgmedium')) {
+            pgmargin = 1134;
+        } else if (classlist.contains('mgnarrow')) {
+            pgmargin = 794;
+        } else /* mgwide */ {
+            pgmargin = 1361;
+        }
+    }
+
     const defaultstyles = {
         document: {
             run: {
@@ -582,6 +603,10 @@ function makeDocxStyles (classlist) {
         address.paragraph.alignment = 'right';
     } else /* topsplit */ {
         defaultstyles.title.paragraph.alignment = 'left';
+        defaultstyles.title.paragraph.spacing = {
+            line: 204,
+            lineRule: 'auto',
+        };
         if (!classlist.contains('topcolumns')) {
             address.paragraph.alignment = 'right';
         }
@@ -591,7 +616,7 @@ function makeDocxStyles (classlist) {
         address.paragraph.alignment = 'left';
         address.paragraph.tabStops = [{
             type: docx.TabStopType.RIGHT,
-            position: docx.TabStopPosition.MAX,
+            position: pagewidth - (2 * pgmargin),
         }];
     }
 
@@ -800,7 +825,7 @@ function makeDocxStyles (classlist) {
         defaultstyles.heading2.run.bold = true;
         defaultstyles.heading2.paragraph.tabStops = [{
             type: docx.TabStopType.RIGHT,
-            position: docx.TabStopPosition.MAX,
+            position: pagewidth - (2 * pgmargin),
         }];
     } else {
 
@@ -930,8 +955,8 @@ function makeDocxStack (pgsize, margins) {
 function makeDocxContacts (stack, elem, flags) {
     var fullname;
     var namepar;
-    var leftpars = [];
-    var rightpars = [];
+    var lefttxt = [];
+    var righttxt = [];
     for (e of elem.children) {
         if (e.classList.contains('fullname')) {
             fullname = e.innerText;
@@ -941,19 +966,19 @@ function makeDocxContacts (stack, elem, flags) {
             });
         } else /* address-block */ {
             if (flags.run_address_together) {
-                leftpars.push(e.innerText);
+                lefttxt.push(e.innerText);
             } else {
                 for (par of e.children) {
                     if (flags.run_address_lines_together) {
-                        leftpars.push(par.innerText);
+                        lefttxt.push(par.innerText);
                     } else {
                         for (child of par.children) {
                             if (child.nodeName === "SPAN") {
                                 var inner = child.innerText;
                                 if (flags.address_columns && par.classList.contains('communication')) {
-                                    rightpars.push(inner);
+                                    righttxt.push(inner);
                                 } else {
-                                    leftpars.push(inner);
+                                    lefttxt.push(inner);
                                 }
                             }
                         }
@@ -962,42 +987,67 @@ function makeDocxContacts (stack, elem, flags) {
             }
         }
     }
-    var combopars = [];
-    for (var i = 0; i < Math.max(leftpars.length, rightpars.length); i++) {
-        var txt = "";
-        if (i in leftpars) {
-            txt = leftpars[i];
-        }
-        if (i in rightpars) {
-            txt = txt + "\t" + rightpars[i];
-        }
-        combopars.push(new docx.Paragraph({
+
+    const leftpars = lefttxt.map((txt) => {
+        return new docx.Paragraph({
             text: txt,
             style: 'Address',
-        }));
+        });
+    });
+    const rightpars = righttxt.map((txt) => {
+        return new docx.Paragraph({
+            text: txt,
+            style: 'Address',
+            alignment: docx.AlignmentType.RIGHT,
+        });
+    });
+    const combopars = [];
+    for (var i = 0; i < Math.max(lefttxt.length, righttxt.length); i++) {
+        var txt = "";
+        if (i in lefttxt) {
+            txt = lefttxt[i];
+
+        }
+        if (i in righttxt) {
+            txt = txt + "\t" + righttxt[i];
+        }
+        if (txt != "") {
+            combopars.push(new docx.Paragraph({
+                text: txt,
+                style: 'Address',
+            }));
+        }
     }
     
     if (flags.contact_columns) {
+        const kids = [];
+        kids.push(new docx.TableCell({
+        //    width: {},
+            verticalAlign: docx.VerticalAlign.CENTER,
+            children: [namepar],
+        }));
+        kids.push(new docx.TableCell({
+        //    width: {},
+            verticalAlign: docx.VerticalAlign.CENTER,
+            children: leftpars,
+        }));
+        if (flags.address_columns) {
+            kids.push(new docx.TableCell({
+            //    width: {},
+                verticalAlign: docx.VerticalAlign.CENTER,
+                children: rightpars,
+            }));
+        }
         stack.add(new docx.Table({
             width: {
                 type: docx.WidthType.DXA,
                 size: flags.pagesize.width - (2 * flags.margin),
             },
+            borders: docx.TableBorders.NONE,
             rows: [
                 new docx.TableRow({
-                    children: [
-                        new docx.TableCell({
-                        //    width: {},
-                            verticalAlign: docx.VerticalAlign.CENTER,
-                            children: [namepar],
-                        }),
-                        new docx.TableCell({
-                        //    width: {},
-                            verticalAlign: docx.VerticalAlign.CENTER,
-                            children: combopars,
-                        })
-                    ]
-                })
+                    children: kids,
+                }),
             ]
         }));
     } else {
