@@ -93,7 +93,6 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
                 <div class="buttons is-centered">
                     <button class="button is-primary is-large has-text-weight-bold" :class="style.itemstyle == 'itemstandard' || 'is-outlined'" @click="style.itemstyle='itemstandard'" >Standard Style</button>
                     <button class="button is-primary is-large has-text-weight-bold" :class="style.itemstyle == 'itemblock' || 'is-outlined'" @click="style.itemstyle='itemblock'" >Block Style</button>
-                    <button class="button is-primary is-large has-text-weight-bold" :class="style.itemstyle == 'itemfancy' || 'is-outlined'" @click="style.itemstyle='itemfancy'" >Indented Style</button>
                     <button class="button is-primary is-large has-text-weight-bold" :class="style.itemstyle == 'itemmodern' || 'is-outlined'" @click="style.itemstyle='itemmodern'" >Modern Style</button>
                     <button class="button is-primary is-large has-text-weight-bold" :class="style.itemstyle == 'itemcompact' || 'is-outlined'" @click="style.itemstyle='itemcompact'" >Compact Style</button>
                 </div>
@@ -347,16 +346,16 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
                                             <template x-if="item.dates.end || item.dates.current || item.dates.start">
                                                 <p class="dates">
                                                     <template x-if="item.dates.start && item.dates.current">
-                                                        <span x-text="(style.itemstyle === 'itemstandard' || style.itemstyle === 'itemblock' ? dateString(item.dates.start) : item.dates.start) + ' – Current' "></span>
+                                                        <span x-text="dateString(item.dates.start) + ' – Current' "></span>
                                                     </template>
                                                     <template x-if="item.dates.current && item.dates.end && !item.dates.start">
-                                                        <span x-text="'Anticipated ' + (style.itemstyle === 'itemstandard' || style.itemstyle === 'itemblock' ? dateString(item.dates.end) | item.dates.end)"></span>
+                                                        <span x-text="'Anticipated ' + dateString(item.dates.end)"></span>
                                                     </template>
                                                     <template x-if="item.dates.start && item.dates.end && !item.dates.current">
-                                                        <span x-text="style.itemstyle === 'itemstandard' || style.itemstyle === 'itemblock' ? dateString(item.dates.start) + ' – ' + dateString(item.dates.end) : item.dates.start + ' – ' + item.dates.end"></span>
+                                                        <span x-text="dateString(item.dates.start) + ' – ' + dateString(item.dates.end)"></span>
                                                     </template>
                                                     <template x-if="item.dates.end && !item.dates.current && !item.dates.start">
-                                                        <span x-text="(style.itemstyle === 'itemstandard' || style.itemstyle === 'itemblock' ? dateString(item.dates.end) : item.dates.end)"></span>
+                                                        <span x-text="dateString(item.dates.end)"></span>
                                                     </template>
                                                 </p>
                                             </template>
