@@ -24,22 +24,22 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
         },
 
         style: $persist({
-            mainfont:     'maingeorgia',
-            fontsize:     'fontmedium',
-            headfont:     'headarial',
-            topfont:      'topmatchdoc',
-            topposition:  'topcenter',
-            topstyle:     'toplines',
-            toplabels:    'topnolabels',
-            headalign:    'headleft',
-            headstyle:    'headbold',
-            headbox:      'headbottom',
-            itemstyle:    'itemstandard',
-            subitemstyle: 'subitemstandard',
-            liststyle:    'listcolumns',
-            listbullet:   'listdisc',
-            pagesize:     'pageletter',
-            margin:       'mgmedium',
+            mainfont:      'maingeorgia',
+            fontsize:      'fontmedium',
+            headfont:      'headarial',
+            topfont:       'topmatchdoc',
+            topposition:   'topcenter',
+            topstyle:      'toplines',
+            toplabels:     'topnolabels',
+            headalign:     'headleft',
+            headstyle:     'headbold',
+            headbox:       'headbottom',
+            itemstyle:     'itemstandard',
+            subitemstyle:  'subitemstandard',
+            liststyle:     'listcolumns',
+            listbullet:    'listdisc',
+            pagesize:      'pageletter',
+            margin:        'mgmedium',
         }).as('printstyles'),
 
         order:          $persist(resetOrder('standard')).as('order'),
@@ -68,6 +68,7 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
             <ul>
                 <li class="" :class="opentab == 'page' && 'is-active'"><a @click="opentab = 'page'">Page</a></li>
                 <li class="" :class="opentab == 'fonts' && 'is-active'"><a @click="opentab = 'fonts'">Fonts</a></li>
+                <li class="" :class="opentab == 'items' && 'is-active'"><a @click="opentab = 'items'">Items</a></li>
                 <li class="" :class="opentab == 'lists' && 'is-active'"><a @click="opentab = 'lists'">Lists</a></li>
                 <li class="" :class="opentab == 'headings' && 'is-active'"><a @click="opentab = 'headings'">Headings</a></li>
                 <li class="" :class="opentab == 'contact' && 'is-active'"><a @click="opentab = 'contact'">Contact Info</a></li>
@@ -87,6 +88,36 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
                     <button class="button is-primary is-large has-text-weight-bold" :class="style.margin == 'mgwide' || 'is-outlined'" @click="style.margin='mgwide'" >Wide</button>
                 </div>
             </div>
+            <div x-show="opentab == 'items'">
+                <h2 class="title is-3">Item Styles</h2>
+                <div class="buttons is-centered">
+                    <button class="button is-primary is-large has-text-weight-bold" :class="style.itemstyle == 'itemstandard' || 'is-outlined'" @click="style.itemstyle='itemstandard'" >Standard Style</button>
+                    <button class="button is-primary is-large has-text-weight-bold" :class="style.itemstyle == 'itemblock' || 'is-outlined'" @click="style.itemstyle='itemblock'" >Block Style</button>
+                    <button class="button is-primary is-large has-text-weight-bold" :class="style.itemstyle == 'itemfancy' || 'is-outlined'" @click="style.itemstyle='itemfancy'" >Indented Style</button>
+                    <button class="button is-primary is-large has-text-weight-bold" :class="style.itemstyle == 'itemmodern' || 'is-outlined'" @click="style.itemstyle='itemmodern'" >Modern Style</button>
+                    <button class="button is-primary is-large has-text-weight-bold" :class="style.itemstyle == 'itemcompact' || 'is-outlined'" @click="style.itemstyle='itemcompact'" >Compact Style</button>
+                </div>
+            </div>
+            {% comment %}
+            <div x-show="opentab == 'items'">
+                <h2 class="title is-3">Item Styles</h2>
+                <h3 class="subtitle is-3">Item Layout</h3>
+                <div class="buttons is-centered">
+                </div>
+                <h3 class="subtitle is-3">Date Layout</h3>
+                <div class="buttons is-centered">
+                </div>
+                <h3 class="subtitle is-3">Item Styling</h3>
+                <div class="buttons is-centered">
+                </div>
+                <h3 class="subtitle is-3">Item Separator Characters</h3>
+                <div class="buttons is-centered">
+                </div>
+                <h3 class="subtitle is-3">Subtitle Styling</h3>
+                <div class="buttons is-centered">
+                </div>
+            </div>
+            {% endcomment %}
             <div x-show="opentab == 'lists'">
                 <h2 class="title is-3">List Styles</h2>
                 <h3 class="subtitle is-3">Standalone Lists</h3>
