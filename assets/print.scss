@@ -48,6 +48,10 @@
     h2 {
         font-size: 16pt;
     }
+
+    h3 {
+        font-size: 14pt;
+    }
 }
 
 .fontsmall {
@@ -60,6 +64,10 @@
     h2 {
         font-size: 14pt;
     }
+
+    h3 {
+        font-size: 12pt;
+    }
 }
 
 .fontlarge {
@@ -71,6 +79,10 @@
 
     h2 {
         font-size: 18pt;
+    }
+
+    h3 {
+        font-size: 16pt;
     }
 }
 
@@ -338,10 +350,6 @@ $ComicSans: "Comic Sans MS", "Comic Sans", "Comic Neue", cursive, sans-serif;
             font-weight: bold;
         }
 
-        //.item-org p:not(:last-of-type)::after {
-        //    content: ", ";
-        //}
-
         .org, .loc {
             font-style: italic;
             display: inline;
@@ -354,10 +362,61 @@ $ComicSans: "Comic Sans MS", "Comic Sans", "Comic Neue", cursive, sans-serif;
 
         .subitems {
             h4 {
-                display: none;
+                font-weight: bold;
             }
         }
     }
+}
+
+.itemblock {
+
+}
+
+.itemmodern {
+
+}
+
+.itemcompact {
+    .item {
+        //clearfix
+        .item-block::after {
+            clear: both;
+            content: "";
+            display: table;
+        }
+
+        margin-block-end: .5em;
+
+        .item-description {
+            float: left;
+        }
+        
+        .h3 {
+            font-weight: bold;
+            display: inline;
+        }
+
+        .item-org, .org, .loc {
+            font-style: italic;
+            display: inline;
+        }
+
+        .dates {
+            font-weight: bold;
+            float: right;
+        }
+
+        .subitems {
+            h4 {
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+
+.itemindented {
+
 }
 
 .listdisc {
