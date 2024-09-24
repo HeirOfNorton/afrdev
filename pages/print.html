@@ -335,10 +335,10 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
                                                 <template x-if="item.org || item.loc">
                                                     <div class="item-org">
                                                         <template x-if="item.org">
-                                                            <p class="org" x-text="item.org + (item.loc ? ', ' : '')"></p>
+                                                            <span class="org" x-text="item.org + (item.loc ? ', ' : '')"></span>
                                                         </template>
                                                         <template x-if="item.loc">
-                                                            <p class="loc" x-text="item.loc"></p>
+                                                            <span class="loc" x-text="item.loc"></span>
                                                         </template>
                                                         <template x-if="style.itemstyle === 'itemmodern'"><span> | </span></template>
                                                     </div>
