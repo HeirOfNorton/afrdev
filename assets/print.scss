@@ -369,7 +369,28 @@ $ComicSans: "Comic Sans MS", "Comic Sans", "Comic Neue", cursive, sans-serif;
 }
 
 .itemblock {
+    .item {
+        margin-block-end: .5em;
 
+        .item-description {
+        }
+        
+        h3 {
+            font-weight: bold;
+        }
+
+        .org, .loc {
+        }
+
+        .dates {
+            font-style: italic;
+        }
+
+        .subitems {
+            h4 {
+            }
+        }
+    }
 }
 
 .itemmodern {
