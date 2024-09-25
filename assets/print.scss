@@ -115,7 +115,7 @@ $ComicSans: "Comic Sans MS", "Comic Sans", "Comic Neue", cursive, sans-serif;
 
 {% for font in headfonts %}
 .head{{ font | downcase }} {
-    h2, h3, h4 {
+    h2, h3 {
         font-family: ${{ font }};
     }
 }
