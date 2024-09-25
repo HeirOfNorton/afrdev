@@ -376,27 +376,29 @@ $ComicSans: "Comic Sans MS", "Comic Sans", "Comic Neue", cursive, sans-serif;
     .item {
         margin-block-end: .5em;
 
+        .item-block {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: left;
+        }
+
         .item-description {
-            display: inline;
         }
         
         h3 {
             font-weight: bold;
         }
 
-        .org, .loc {
-            font-style: italic;
-            display: inline;
-        }
-
         .dates {
             font-weight: bold;
-            float: right;
+            width:1.5in;
+            margin-right: .5in;
         }
 
         .subitems {
+            margin-left: 2in;
             h4 {
-                font-weight: bold;
+                display: hidden;
             }
         }
     }
