@@ -388,6 +388,7 @@ $ComicSans: "Comic Sans MS", "Comic Sans", "Comic Neue", cursive, sans-serif;
 
         .subitems {
             h4 {
+                font-weight: bold;
             }
         }
     }
@@ -419,7 +420,7 @@ $ComicSans: "Comic Sans MS", "Comic Sans", "Comic Neue", cursive, sans-serif;
         .subitems {
             margin-left: 2in;
             h4 {
-                display: hidden;
+                display: none;
             }
         }
     }
