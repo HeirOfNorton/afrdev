@@ -175,7 +175,7 @@ const months = {
 
 function dateString(instring) {
     const parts = instring.split('-');
-    return months[parts[1]] + ', ' + parts[0];
+    return months[parts[1]] + ', ' + parts[0];
 }
 
 function resetOrder(order) {
@@ -827,7 +827,11 @@ function makeDocxStyles (classlist) {
             type: docx.TabStopType.RIGHT,
             position: pagewidth - (2 * pgmargin),
         }];
-    } else {
+    } else if (classlist.contains('itemmodern')) {
+
+    } else if (classlist.contains('itemcompact')) {
+
+    } else if (classlist.contains('itemblock')) {
 
     }
 
