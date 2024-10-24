@@ -173,9 +173,30 @@ const months = {
     '12': 'December'
 }
 
-function dateString(instring) {
+const shortmonths = {
+    '01': 'Jan',
+    '02': 'Feb',
+    '03': 'Mar',
+    '04': 'Apr',
+    '05': 'May',
+    '06': 'Jun',
+    '07': 'Jul',
+    '08': 'Aug',
+    '09': 'Sep',
+    '10': 'Oct',
+    '11': 'Nov',
+    '12': 'Dec'
+}
+
+function dateString(instring, format = 'itemdatelong') {
     const parts = instring.split('-');
-    return months[parts[1]] + ', ' + parts[0];
+    if (format === 'itemdatelong') {
+        return months[parts[1]] + ', ' + parts[0];
+    } else if (format === 'itemdateshort') {
+        return shortmonths[parts[1]] + ' ' + parts[0];
+    } else /* format === 'itemdatenum' */ {
+        return parts[1] + ' / ' + parts[0];
+    } 
 }
 
 function resetOrder(order) {
