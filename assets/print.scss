@@ -346,24 +346,12 @@ $ComicSans: "Comic Sans MS", "Comic Sans", "Comic Neue", cursive, sans-serif;
             float: left;
         }
         
-        h3 {
-            font-weight: bold;
-        }
-
         .org, .loc {
-            font-style: italic;
             display: inline;
         }
 
         .dates {
-            font-weight: bold;
             float: right;
-        }
-
-        .subitems {
-            h4 {
-                font-weight: bold;
-            }
         }
     }
 }
@@ -371,60 +359,7 @@ $ComicSans: "Comic Sans MS", "Comic Sans", "Comic Neue", cursive, sans-serif;
 .itemblock {
     .item {
         margin-block-end: .5em;
-
-        .item-description {
-        }
-        
-        h3 {
-            font-weight: bold;
-        }
-
-        .org, .loc {
-        }
-
-        .dates {
-            font-style: italic;
-        }
-
-        .subitems {
-            h4 {
-                font-weight: bold;
-            }
-        }
     }
-}
-
-.itemmodern {
-    .item {
-        margin-block-end: .5em;
-
-        .item-block {
-            display: flex;
-            flex-direction: row-reverse;
-            justify-content: left;
-        }
-
-        .item-description {
-        }
-        
-        h3 {
-            font-weight: bold;
-        }
-
-        .dates {
-            font-weight: bold;
-            width:1.5in;
-            margin-right: .5in;
-        }
-
-        .subitems {
-            margin-left: 2in;
-            h4 {
-                display: none;
-            }
-        }
-    }
-
 }
 
 .itemcompact {
@@ -443,32 +378,35 @@ $ComicSans: "Comic Sans MS", "Comic Sans", "Comic Neue", cursive, sans-serif;
         }
         
         h3 {
-            font-weight: bold;
             display: inline;
         }
 
         .item-org, .org, .loc {
-            font-style: italic;
             display: inline;
         }
 
         .dates {
-            font-weight: bold;
             float: right;
-        }
-
-        .subitems {
-            h4 {
-                font-weight: bold;
-            }
         }
     }
 }
 
-
-.itemindented {
+.itemplain {
 
 }
+
+.itembold {
+    .item-org, .org, .loc {
+        font-weight: bold;
+    }
+}
+
+.itemitalic {
+    .item-org, .org, .loc {
+        font-style: italic;
+    }
+}
+
 
 .listdisc {
     ul {
