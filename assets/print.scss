@@ -407,6 +407,21 @@ $ComicSans: "Comic Sans MS", "Comic Sans", "Comic Neue", cursive, sans-serif;
     }
 }
 
+.itemdateplain {
+
+}
+
+.itemdatebold {
+    .dates {
+        font-weight: bold;
+    }
+}
+
+.itemdateitalic {
+    .dates {
+        font-style: italic;
+    }
+}
 
 .listdisc {
     ul {
