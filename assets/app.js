@@ -195,7 +195,7 @@ function dateString(instring, format = 'itemdatelong') {
     } else if (format === 'itemdateshort') {
         return shortmonths[parts[1]] + ' ' + parts[0];
     } else /* format === 'itemdatenum' */ {
-        return parts[1] + ' / ' + parts[0];
+        return parts[1] + '/' + parts[0];
     } 
 }
 
