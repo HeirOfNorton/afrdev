@@ -879,7 +879,29 @@ function makeDocxStyles (classlist) {
     } else if (classlist.contains('itemheaditalic')) {
         defaultstyles.heading2.run.italics = true;
     } else if (classlist.contains('itemheadmatch')) {
-
+        if (classlist.contains('headbold')) {
+            defaultstyles.heading2.run.bold = true;
+        } else if (classlist.contains('headitalic')) {
+            defaultstyles.heading2.run.italics = true;
+        } else if (classlist.contains('headbolditalic')) {
+            defaultstyles.heading2.run.bold = true;
+            defaultstyles.heading2.run.italics = true;
+        } else if (classlist.contains('headunderline')) {
+            defaultstyles.heading2.run.underline = {};
+        } else if (classlist.contains('headboldunderline')) {
+            defaultstyles.heading2.run.bold = true;
+            defaultstyles.heading2.run.underline = {};
+        } else if (classlist.contains('headallcaps')) {
+            defaultstyles.heading2.run.allCaps = true;
+        } else if (classlist.contains('headboldallcaps')) {
+            defaultstyles.heading2.run.bold = true;
+            defaultstyles.heading2.run.allCaps = true;
+        } else if (classlist.contains('headsmallcaps')) {
+            defaultstyles.heading2.run.smallCaps = true;
+        } else if (classlist.contains('headboldsmallcaps')) {
+            defaultstyles.heading2.run.bold = true;
+            defaultstyles.heading2.run.smallCaps = true;
+        }
     }
 
     if (classlist.contains('subtitlebold')) {
@@ -887,7 +909,29 @@ function makeDocxStyles (classlist) {
     } else if (classlist.contains('subtitleitalic')) {
         defaultstyles.heading3.run.italics = true;
     } else if (classlist.contains('subtitlematch')) {
-
+        if (classlist.contains('headbold')) {
+            defaultstyles.heading3.run.bold = true;
+        } else if (classlist.contains('headitalic')) {
+            defaultstyles.heading3.run.italics = true;
+        } else if (classlist.contains('headbolditalic')) {
+            defaultstyles.heading3.run.bold = true;
+            defaultstyles.heading3.run.italics = true;
+        } else if (classlist.contains('headunderline')) {
+            defaultstyles.heading3.run.underline = {};
+        } else if (classlist.contains('headboldunderline')) {
+            defaultstyles.heading3.run.bold = true;
+            defaultstyles.heading3.run.underline = {};
+        } else if (classlist.contains('headallcaps')) {
+            defaultstyles.heading3.run.allCaps = true;
+        } else if (classlist.contains('headboldallcaps')) {
+            defaultstyles.heading3.run.bold = true;
+            defaultstyles.heading3.run.allCaps = true;
+        } else if (classlist.contains('headsmallcaps')) {
+            defaultstyles.heading3.run.smallCaps = true;
+        } else if (classlist.contains('headboldsmallcaps')) {
+            defaultstyles.heading3.run.bold = true;
+            defaultstyles.heading3.run.smallCaps = true;
+        } 
     }
 
 
