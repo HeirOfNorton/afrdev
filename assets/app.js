@@ -331,7 +331,9 @@ function makeDocxStyles (classlist) {
 
             },
             paragraph: {
-
+                spacing: {
+                    before: 120,
+                },
             },
         },
         heading3: {
@@ -339,9 +341,6 @@ function makeDocxStyles (classlist) {
 
             },
             paragraph: {
-                spacing: {
-                    before: 120,
-                },
             },
         },
         heading4: {
@@ -843,15 +842,22 @@ function makeDocxStyles (classlist) {
         item_date.paragraph = null;
         runstyles.push(item_date);
 
-        item_org.run.italics = true;
-
-        defaultstyles.heading2.run.bold = true;
         defaultstyles.heading2.paragraph.tabStops = [{
             type: docx.TabStopType.RIGHT,
             position: pagewidth - (2 * pgmargin),
         }];
     } else if (classlist.contains('itemcompact')) {
+        item_org.run.font = defaultstyles.document.run.font;
+        item_org.paragraph = null;
+        runstyles.push(item_org);
+        item_date.run.font = defaultstyles.document.run.font;
+        item_date.paragraph = null;
+        runstyles.push(item_date);
 
+        defaultstyles.heading2.paragraph.tabStops = [{
+            type: docx.TabStopType.RIGHT,
+            position: pagewidth - (2 * pgmargin),
+        }];
     } else if (classlist.contains('itemblock')) {
 
     }
