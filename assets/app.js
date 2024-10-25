@@ -457,7 +457,7 @@ function makeDocxStyles (classlist) {
     };
 
     const parastyles = [address, summary, item_org, inlinelist];
-    const runstyles = [listheading];
+    const runstyles = [item_head, listheading];
 
     if (classlist.contains('maingeorgia')){
         defaultstyles.document.run.font = "Georgia";
@@ -1249,7 +1249,7 @@ function makeDocxItems (stack, elem, flags) {
                     const titleruns = [];
                     titleruns.push(new docx.TextRun({
                         text: title,
-                        style: item_head,
+                        style: 'ItemHeading',
                     }));
                     if (flags.item_org_run_together && org) {
                         titleruns.push(new docx.TextRun({
