@@ -863,29 +863,29 @@ function makeDocxStyles (classlist) {
     }
 
     if (classlist.contains('itembold')) {
-
+        item_org.run.bold = true;
     } else if (classlist.contains('itemitalic')) {
-
+        item_org.run.italics = true;
     }
 
     if (classlist.contains('itemdatebold')) {
-
+        item_date.run.bold = true;
     } else if (classlist.contains('itemdateitalic')) {
-
+        item_date.run.italics = true;
     }
 
     if (classlist.contains('itemheadbold')) {
-
+        defaultstyles.heading2.run.bold = true;
     } else if (classlist.contains('itemheaditalic')) {
-
+        defaultstyles.heading2.run.italics = true;
     } else if (classlist.contains('itemheadmatch')) {
 
     }
 
     if (classlist.contains('subtitlebold')) {
-
+        defaultstyles.heading3.run.bold = true;
     } else if (classlist.contains('subtitleitalic')) {
-
+        defaultstyles.heading3.run.italics = true;
     } else if (classlist.contains('subtitlematch')) {
 
     }
