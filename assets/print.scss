@@ -374,7 +374,7 @@ $ComicSans: "Comic Sans MS", "Comic Sans", "Comic Neue", cursive, sans-serif;
         margin-block-end: .5em;
 
         .item-description {
-            float: left;
+            display: inline;
         }
         
         h3 {
@@ -383,9 +383,11 @@ $ComicSans: "Comic Sans MS", "Comic Sans", "Comic Neue", cursive, sans-serif;
 
         .item-org, .org, .loc {
             display: inline;
+            white-space: nowrap;
         }
 
         .dates {
+            display: inline;
             float: right;
         }
     }
