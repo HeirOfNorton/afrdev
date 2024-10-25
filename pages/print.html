@@ -35,10 +35,12 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
             headstyle:      'headbold',
             headbox:        'headbottom',
             itemlayout:     'itemstandard',
+            itemhead:       'itemheadmatch',
             itemstyle:      'itemplain',
             itemfocus:      'itemjobprimary',
             itemdateformat: 'itemdatelong',
             itemdatestyle:  'itemdatebold',
+            subtitle:       'subtitlebold',
             subitemstyle:   'subitemstandard',
             liststyle:      'listcolumns',
             listbullet:     'listdisc',
@@ -110,11 +112,17 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
                     <button class="button is-primary is-large has-text-weight-bold" :class="style.itemlayout == 'itemblock' || 'is-outlined'" @click="style.itemlayout='itemblock'" >Block Style</button>
                     <button class="button is-primary is-large has-text-weight-bold" :class="style.itemlayout == 'itemcompact' || 'is-outlined'" @click="style.itemlayout='itemcompact'" >Compact Style</button>
                 </div>
+                <h3 class="subtitle is-3">Item Title Style</h3>
+                <div class="buttons is-centered">
+                    <button class="button is-primary is-large has-text-weight-bold" :class="style.itemhead == 'itemheadmatch' || 'is-outlined'" @click="style.itemhead='itemheadmatch'" >Match Headings</button>
+                    <button class="button is-primary is-large has-text-weight-bold" :class="style.itemhead == 'itemheadbold' || 'is-outlined'" @click="style.itemhead='itemheadbold'" >Bold</button>
+                    <button class="button is-primary is-large has-text-weight-bold" :class="style.itemhead == 'itemheaditalic' || 'is-outlined'" @click="style.itemhead='itemheaditalic'" >Italic</button>
+                </div>
                 <h3 class="subtitle is-3">Item Text Style</h3>
+                <div class="buttons is-centered">
                     <button class="button is-primary is-large has-text-weight-bold" :class="style.itemstyle == 'itemplain' || 'is-outlined'" @click="style.itemstyle='itemplain'" >Plain</button>
                     <button class="button is-primary is-large has-text-weight-bold" :class="style.itemstyle == 'itembold' || 'is-outlined'" @click="style.itemstyle='itembold'" >Bold</button>
                     <button class="button is-primary is-large has-text-weight-bold" :class="style.itemstyle == 'itemitalic' || 'is-outlined'" @click="style.itemstyle='itemitalic'" >Italic</button>
-                <div class="buttons is-centered">
                 </div>
                 <h3 class="subtitle is-3">Date Format</h3>
                 <div class="buttons is-centered">
@@ -123,10 +131,18 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
                     <button class="button is-primary is-large has-text-weight-bold" :class="style.itemdateformat == 'itemdatenum' || 'is-outlined'" @click="style.itemdateformat='itemdatenum'" >Numeric Date</button>
                 </div>
                 <h3 class="subtitle is-3">Date Text Style</h3>
+                <div class="buttons is-centered">
                     <button class="button is-primary is-large has-text-weight-bold" :class="style.itemdatestyle == 'itemdateplain' || 'is-outlined'" @click="style.itemdatestyle='itemdateplain'" >Plain</button>
                     <button class="button is-primary is-large has-text-weight-bold" :class="style.itemdatestyle == 'itemdatebold' || 'is-outlined'" @click="style.itemdatestyle='itemdatebold'" >Bold</button>
                     <button class="button is-primary is-large has-text-weight-bold" :class="style.itemdatestyle == 'itemdateitalic' || 'is-outlined'" @click="style.itemdatestyle='itemdateitalic'" >Italic</button>
+                </div>
+                <h3 class="subtitle is-3">List Title Style</h3>
                 <div class="buttons is-centered">
+                    <button class="button is-primary is-large has-text-weight-bold" :class="style.subtitle == 'subtitlematch' || 'is-outlined'" @click="style.subtitle='subtitlematch'" >Match Heading Style</button>
+                    <button class="button is-primary is-large has-text-weight-bold" :class="style.subtitle == 'subtitleplain' || 'is-outlined'" @click="style.subtitle='subtitleplain'" >Plain`</button>
+                    <button class="button is-primary is-large has-text-weight-bold" :class="style.subtitle == 'subtitlebold' || 'is-outlined'" @click="style.subtitle='subtitlebold'" >Bold</button>
+                    <button class="button is-primary is-large has-text-weight-bold" :class="style.subtitle == 'subtitleitalic' || 'is-outlined'" @click="style.subtitle='subtitleitalic'" >Italic</button>
+                    <button class="button is-primary is-large has-text-weight-bold" :class="style.subtitle == 'subtitlehide' || 'is-outlined'" @click="style.subtitle='subtitlehide'" >Hidden</button>
                 </div>
             </div>
             <div x-show="opentab == 'lists'">
