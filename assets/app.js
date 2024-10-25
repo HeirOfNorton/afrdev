@@ -410,6 +410,14 @@ function makeDocxStyles (classlist) {
         paragraph: { },
 
     };
+    const listheading = {
+        id: 'ListHeading',
+        name: 'List Heading',
+        basedOn: 'Normal',
+        next:   'Normal',
+        quickStyle: false,
+        run: { },
+    }
 
     const list_numbering = {
         reference: "list-item",
@@ -442,7 +450,7 @@ function makeDocxStyles (classlist) {
     };
 
     const parastyles = [address, summary, item_org, inlinelist];
-    const runstyles = [];
+    const runstyles = [listheading];
 
     if (classlist.contains('maingeorgia')){
         defaultstyles.document.run.font = "Georgia";
@@ -830,12 +838,6 @@ function makeDocxStyles (classlist) {
         subitem_numbering.levels[0].text = "\u2014";
     }
     
-    if (classlist.contains('listinline')) {
-
-    } else {
-
-    }
-
     if (classlist.contains('itemstandard')) {
         item_date.run.font = defaultstyles.document.run.font;
         item_date.paragraph = null;
@@ -848,12 +850,44 @@ function makeDocxStyles (classlist) {
             type: docx.TabStopType.RIGHT,
             position: pagewidth - (2 * pgmargin),
         }];
-    } else if (classlist.contains('itemmodern')) {
-
     } else if (classlist.contains('itemcompact')) {
 
     } else if (classlist.contains('itemblock')) {
 
+    }
+
+    if (classlist.contains('itembold')) {
+
+    } else if (classlist.contains('itemitalic')) {
+
+    }
+
+    if (classlist.contains('itemdatebold')) {
+
+    } else if (classlist.contains('itemdateitalic')) {
+
+    }
+
+    if (classlist.contains('itemheadbold')) {
+
+    } else if (classlist.contains('itemheaditalic')) {
+
+    } else if (classlist.contains('itemheadmatch')) {
+
+    }
+
+    if (classlist.contains('subtitlebold')) {
+
+    } else if (classlist.contains('subtitleitalic')) {
+
+    } else if (classlist.contains('subtitlematch')) {
+
+    }
+
+
+
+    if (classlist.contains('subiteminline')) {
+        listheading.run = defaultstyles.heading3.run;
     }
 
     const docstyles = {
@@ -916,8 +950,12 @@ function makeDocxFlags (classlist) {
         flags.listinline = true;
     }
     if (classlist.contains('itemstandard')) {
+        flags.item_date_tab_right = true;
+    } else if (classlist.contains('itemcompact')) {
         flags.item_org_run_together = true;
         flags.item_date_tab_right = true;
+    }
+    if (classlist.contains('subtitlehide')) {
         flags.item_skip_subtitle = true;
     }
     if (classlist.contains('subitemcolumns')) {
@@ -1138,20 +1176,14 @@ function makeDocxItems (stack, elem, flags) {
         } else if (item.nodeName === 'DIV') {
             for (block of item.children) {
                 if (block.className === 'item-block') {
-                    var title, org, loc, dates;
+                    var title, org, dates;
                     for (i of block.children) {
                         if (i.className === 'item-description') {
                             for (j of i.children) {
                                 if (j.nodeName === 'H3') {
                                     title = j.innerText;
                                 } else if (j.className === 'item-org') {
-                                    for (k of j.children) {
-                                        if (k.className === 'org') {
-                                            org = k.innerText;
-                                        } else if (k.className === 'loc') {
-                                            loc = k.innerText;
-                                        }
-                                    }
+                                    org = j.innerText;
                                 }
                             }
                         } else if (i.className === 'dates') {
@@ -1159,6 +1191,12 @@ function makeDocxItems (stack, elem, flags) {
                         }
                     }
                     const titleruns = [new docx.TextRun(title)];
+                    if (flags.item_org_run_together && org) {
+                        titleruns.push(new docx.TextRun({
+                            text: org,
+                            style: 'Organization',
+                        }));
+                    }
                     if (flags.item_date_tab_right && dates) {
                         titleruns.push(new docx.TextRun({children: [new docx.Tab()]}));
                         titleruns.push(new docx.TextRun({
@@ -1171,25 +1209,12 @@ function makeDocxItems (stack, elem, flags) {
                         children: titleruns,
                     }));
 
-                    if (flags.item_org_run_together && org && loc) {
+                    if (org && !flags.item_org_run_together) {
                         stack.add(new docx.Paragraph({
-                            text: org + loc,
+                            text: org,
                             style: 'Organization',
                         }));
-                    } else {
-                        if (org) {
-                            stack.add(new docx.Paragraph({
-                                text: org,
-                                style: 'Organization',
-                            }));
-                        }
-                        if (loc) {
-                            stack.add(new docx.Paragraph({
-                                text: loc,
-                                style: 'Organization',
-                            }));
-                        }
-                    }
+                    } 
 
                     if (!flags.item_date_tab_right && dates) {
                         stack.add(new docx.Paragraph({
@@ -1199,7 +1224,7 @@ function makeDocxItems (stack, elem, flags) {
                     }
 
                 } else if (block.className === 'subitems') {
-                    if (!flags.item_skip_subtitle) {
+                    if (!flags.item_skip_subtitle && !flags.subiteminline) {
                         stack.add(new docx.Paragraph({
                             text: block.children[0].innerText,
                             heading: docx.HeadingLevel.HEADING_3,
@@ -1207,8 +1232,18 @@ function makeDocxItems (stack, elem, flags) {
                     }
 
                     if (flags.subiteminline) {
-                        stack.add(new docx.Paragraph({
+                        const subruns = [];
+                        if (!flags.item_skip_subtitle) {
+                            subruns.push(new docx.TextRun({
+                                text: block.children[0].innerText,
+                                style: 'ListHeading',
+                            }));
+                        }
+                        subruns.push(new docx.TextRun({
                             text: block.children[1].innerText,
+                        }));
+                        stack.add(new docx.Paragraph({
+                            children: subruns,
                             style: 'InlineList',
                         }));
                     } else {
