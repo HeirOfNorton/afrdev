@@ -379,6 +379,14 @@ function makeDocxStyles (classlist) {
         paragraph: {},
 
     };
+    const item_head = {
+        id: 'ItemHeading',
+        name: 'Item Heading',
+        basedOn: 'Normal',
+        next: 'Organization',
+        quickStyle: false,
+        run: {},
+    }
     const item_org = {
         id: 'Organization',
         name: 'Organization',
@@ -875,32 +883,32 @@ function makeDocxStyles (classlist) {
     }
 
     if (classlist.contains('itemheadbold')) {
-        defaultstyles.heading2.run.bold = true;
+        item_head.run.bold = true;
     } else if (classlist.contains('itemheaditalic')) {
-        defaultstyles.heading2.run.italics = true;
+        item_head.run.italics = true;
     } else if (classlist.contains('itemheadmatch')) {
         if (classlist.contains('headbold')) {
-            defaultstyles.heading2.run.bold = true;
+            item_head.run.bold = true;
         } else if (classlist.contains('headitalic')) {
-            defaultstyles.heading2.run.italics = true;
+            item_head.run.italics = true;
         } else if (classlist.contains('headbolditalic')) {
-            defaultstyles.heading2.run.bold = true;
-            defaultstyles.heading2.run.italics = true;
+            item_head.run.bold = true;
+            item_head.run.italics = true;
         } else if (classlist.contains('headunderline')) {
-            defaultstyles.heading2.run.underline = {};
+            item_head.run.underline = {};
         } else if (classlist.contains('headboldunderline')) {
-            defaultstyles.heading2.run.bold = true;
-            defaultstyles.heading2.run.underline = {};
+            item_head.run.bold = true;
+            item_head.run.underline = {};
         } else if (classlist.contains('headallcaps')) {
-            defaultstyles.heading2.run.allCaps = true;
+            item_head.run.allCaps = true;
         } else if (classlist.contains('headboldallcaps')) {
-            defaultstyles.heading2.run.bold = true;
-            defaultstyles.heading2.run.allCaps = true;
+            item_head.run.bold = true;
+            item_head.run.allCaps = true;
         } else if (classlist.contains('headsmallcaps')) {
-            defaultstyles.heading2.run.smallCaps = true;
+            item_head.run.smallCaps = true;
         } else if (classlist.contains('headboldsmallcaps')) {
-            defaultstyles.heading2.run.bold = true;
-            defaultstyles.heading2.run.smallCaps = true;
+            item_head.run.bold = true;
+            item_head.run.smallCaps = true;
         }
     }
 
@@ -933,8 +941,6 @@ function makeDocxStyles (classlist) {
             defaultstyles.heading3.run.smallCaps = true;
         } 
     }
-
-
 
     if (classlist.contains('subiteminline')) {
         listheading.run = defaultstyles.heading3.run;
@@ -1240,7 +1246,11 @@ function makeDocxItems (stack, elem, flags) {
                             dates = i.innerText;
                         }
                     }
-                    const titleruns = [new docx.TextRun(title)];
+                    const titleruns = [];
+                    titleruns.push(new docx.TextRun({
+                        text: title,
+                        style: item_head,
+                    }));
                     if (flags.item_org_run_together && org) {
                         titleruns.push(new docx.TextRun({
                             text: org,
