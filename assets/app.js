@@ -241,21 +241,8 @@ const defaultOrder = {
         ],
 }
 
-function resetOrder(sections, order='chronological') {
-    print(sections.length());
-    const baseorder = defaultOrder[order];
-    const currentOrder = [];
-    for (sect of baseorder) {
-        var section = sections[sect];
-        if (!section.skipped) {
-            currentOrder.push({
-                section: sect,
-                name: section.title,
-                hidden: false,
-            });
-        }
-    }
-    return currentOrder;
+function resetOrder(order='chronological') {
+    return defaultOrder[order];
 }
 
 function showprint() {
