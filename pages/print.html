@@ -102,6 +102,15 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
             </div>
             <div x-show="opentab == 'order'">
                 <h2 class="title is-3">Section Order</h2>
+                <div class="block">
+                    <ul>
+                        <template x-for="section in order" :key="section.section">
+                            <li class="">
+                                <span x-text="section.name"></span>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
                 <div class="buttons block">
                     <button @click="order.splice(1, 0, order.splice(-1, 1)[0])" class="button is-primary is-large">Move last up.</button>
                     <button @click="order.splice(2, 0, order.splice(1, 1)[0])" class="button is-primary is-large">Move first down.</button>
