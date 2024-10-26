@@ -100,18 +100,13 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
                     <button class="button is-primary is-large has-text-weight-bold" :class="style.margin == 'mgwide' || 'is-outlined'" @click="style.margin='mgwide'" >Wide</button>
                 </div>
             </div>
-            {% comment %}
             <div x-show="opentab == 'order'">
                 <h2 class="title is-3">Section Order</h2>
-                <div class="block">
-                    <ul>
-                        <template x-for="section in getSectionOrder()">
-                            <li class="" x-text="section.title"></li>
-                        </template>
-                    </ul>
+                <div class="buttons block">
+                    <button class="button is-primary is-large">Move last up.</button>
+                    <button class="button is-primary is-large">Move first down.</button>
                 </div>
             </div>
-            {% endcomment %}
             <div x-show="opentab == 'items'">
                 <h2 class="title is-3">Experience Item Styles</h2>
                 <h3 class="subtitle is-3">Item Layout</h3>
