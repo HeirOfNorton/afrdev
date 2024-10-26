@@ -103,10 +103,12 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
             <div x-show="opentab == 'order'">
                 <h2 class="title is-3">Section Order</h2>
                 <div class="block">
-                    <ul>
+                    <ul class="panel">
                         <template x-for="section in order" :key="section.section">
-                            <li class="">
-                                <span x-text="section.name"></span>
+                            <li>
+                                <a class="panel-block">
+                                    <span x-text="section.name"></span>
+                                </a>
                             </li>
                         </template>
                     </ul>
