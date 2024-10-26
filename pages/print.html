@@ -296,7 +296,7 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
             <div class="page" id="page" :style="style.pagesize == 'pageletter' ? {scale: boxwidth / 816} : {scale: boxwidth / 794}"
                 :class="Object.values(style)"
             >
-                <template x-for="section in order">
+                <template x-for="section in order" :key="section.section">
                     <section x-data="{current: sections[section.section]}" x-show="!section.hidden">
                         <template x-if="current.type === 'contact'">
                             <div class="contact">
