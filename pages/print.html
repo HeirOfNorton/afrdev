@@ -48,7 +48,12 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
             margin:         'mgmedium',
         }).as('printstyles'),
 
-        order:          $persist(resetOrder('chronological')).as('order'),
+        order:          $persist([]).as('order'),
+        init() {
+            if (this.order.length == 0) {
+                this.order = resetOrder(this.sections, 'chronological');
+            }
+        },
 
     }"
     class="printcontainer"
@@ -297,7 +302,7 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
                 :class="Object.values(style)"
             >
                 <template x-for="section in order">
-                    <section x-data="{current: sections[section]}" x-show="!current.skipped">
+                    <section x-data="{current: sections[section.name]}" x-show="!section.hidden">
                         <template x-if="current.type === 'contact'">
                             <div class="contact">
                                 <h1 class="fullname" x-text="current.fullname"></h1>

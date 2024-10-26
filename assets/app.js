@@ -241,8 +241,20 @@ const defaultOrder = {
         ],
 }
 
-function resetOrder(order='chronological') {
-    return defaultOrder[order];
+function resetOrder(sections, order='chronological') {
+    const baseorder = defaultOrder[order];
+    const currentOrder = [];
+    for (sect of baseorder) {
+        var section = sections[sect];
+        if (!section.skipped) {
+            currentOrder.push({
+                section: sect,
+                name: section.title,
+                hidden: false,
+            });
+        }
+    }
+    return currentOrder;
 }
 
 function showprint() {
