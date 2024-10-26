@@ -95,6 +95,7 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
                     <button class="button is-primary is-large has-text-weight-bold" :class="style.margin == 'mgwide' || 'is-outlined'" @click="style.margin='mgwide'" >Wide</button>
                 </div>
             </div>
+            {% comment %}
             <div x-show="opentab == 'order'">
                 <h2 class="title is-3">Section Order</h2>
                 <div class="block">
@@ -105,6 +106,7 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
                     </ul>
                 </div>
             </div>
+            {% endcomment %}
             <div x-show="opentab == 'items'">
                 <h2 class="title is-3">Experience Item Styles</h2>
                 <h3 class="subtitle is-3">Item Layout</h3>
@@ -295,7 +297,7 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
                 :class="Object.values(style)"
             >
                 <template x-for="section in order">
-                    <section x-data="{current: sections[section]}" x-show="!current.skipped">
+                    <section x-data="{current: sections[section.name]}" x-show="!section.hidden">
                         <template x-if="current.type === 'contact'">
                             <div class="contact">
                                 <h1 class="fullname" x-text="current.fullname"></h1>
