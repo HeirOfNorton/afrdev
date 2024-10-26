@@ -107,6 +107,18 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
                         <template x-for="section in order" :key="section.section">
                             <li class="panel-block">
                                 <span x-text="section.name"></span>
+                                <span class="buttons has-addons field are-small">
+                                    <button class="button">
+                                        <span class="icon is-small">
+                                            {% include icon.html i='caret-up' %}
+                                        </span>
+                                    </button>
+                                    <button class="button">
+                                        <span class="icon is-small">
+                                            {% include icon.html i='caret-down' %}
+                                        </span>
+                                    </button>
+                                </span>
                             </li>
                         </template>
                     </ul>
