@@ -242,6 +242,7 @@ const defaultOrder = {
 }
 
 function resetOrder(sections, order='chronological') {
+    print(sections.length());
     const baseorder = defaultOrder[order];
     const currentOrder = [];
     for (sect of baseorder) {
