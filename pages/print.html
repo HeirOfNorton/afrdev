@@ -104,9 +104,9 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
                 <h2 class="title is-3">Section Order</h2>
                 <div class="block">
                     <ul class="panel">
-                        <template x-for="section in order" :key="section.section">
+                        <template x-for="part in order" :key="part.section">
                             <li class="panel-block">
-                                <span x-text="section.name"></span>
+                                <span x-text="part.name"></span>
                                 <span class="buttons has-addons field are-small">
                                     <button class="button">
                                         <span class="icon is-small">
