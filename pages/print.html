@@ -110,12 +110,12 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
                                 <span x-text="index + ' of ' + order.length"></span>
                                 <template x-if="section.section != 'contact'">
                                     <span class="buttons has-addons field are-small">
-                                        <button class="button" :disabled="index < 2" @click="order.splice(index+1, 0, order.splice(index, 1)[0])">
+                                        <button class="button" :disabled="index < 2" @click="order.splice(index-1, 0, order.splice(index, 1)[0])">
                                             <span class="icon is-small">
                                                 {% include icon.html i='caret-up' %}
                                             </span>
                                         </button>
-                                        <button class="button" :disabled="index > order.length - 2" @click="order.splice(index-1, 0, order.splice(index, 1)[0])">
+                                        <button class="button" :disabled="index > order.length - 2" @click="order.splice(index+1, 0, order.splice(index, 1)[0])">
                                             <span class="icon is-small">
                                                 {% include icon.html i='caret-down' %}
                                             </span>
