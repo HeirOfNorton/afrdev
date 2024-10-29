@@ -107,9 +107,8 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
                         <template x-for="(section, index) in order" :key="section.section">
                             <li class="panel-block">
                                 <span x-text="section.name"></span>
-                                <span x-text="index + ' of ' + order.length"></span>
                                 <template x-if="section.section != 'contact'">
-                                    <span class="buttons has-addons field are-small">
+                                    <span class="is-pulled-right buttons has-addons field are-small">
                                         <button class="button" :disabled="index < 2" @click="order.splice(index-1, 0, order.splice(index, 1)[0])">
                                             <span class="icon is-small">
                                                 {% include icon.html i='caret-up' %}
@@ -125,10 +124,6 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
                             </li>
                         </template>
                     </ul>
-                </div>
-                <div class="buttons block">
-                    <button @click="order.splice(1, 0, order.splice(-1, 1)[0])" class="button is-primary is-large">Move last up.</button>
-                    <button @click="order.splice(2, 0, order.splice(1, 1)[0])" class="button is-primary is-large">Move first down.</button>
                 </div>
             </div>
             <div x-show="opentab == 'items'">
