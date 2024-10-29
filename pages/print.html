@@ -105,10 +105,10 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
                 <div class="block">
                     <ul class="panel">
                         <template x-for="(section, index) in order" :key="section.section">
-                            <li class="panel-block">
-                                <span x-text="section.name"></span>
+                            <li class="panel-block is-flex is-flex-direction-row">
+                                <span class="is-flex-grow-1" x-text="section.name"></span>
                                 <template x-if="section.section != 'contact'">
-                                    <span class="is-pulled-right buttons has-addons field are-small">
+                                    <span class="buttons has-addons field are-small">
                                         <button class="button" :disabled="index < 2" @click="order.splice(index-1, 0, order.splice(index, 1)[0])">
                                             <span class="icon is-small">
                                                 {% include icon.html i='caret-up' %}
