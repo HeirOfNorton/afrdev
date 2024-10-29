@@ -104,21 +104,24 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
                 <h2 class="title is-3">Section Order</h2>
                 <div class="block">
                     <ul class="panel">
-                        <template x-for="section in order" :key="section.section">
+                        <template x-for="(section, index) in order" :key="section.section">
                             <li class="panel-block">
                                 <span x-text="section.name"></span>
-                                <span class="buttons has-addons field are-small">
-                                    <button class="button">
-                                        <span class="icon is-small">
-                                            {% include icon.html i='caret-up' %}
-                                        </span>
-                                    </button>
-                                    <button class="button">
-                                        <span class="icon is-small">
-                                            {% include icon.html i='caret-down' %}
-                                        </span>
-                                    </button>
-                                </span>
+                                <span x-text="index + ' of ' order.length"
+                                <template x-if="section.section != 'contact'">
+                                    <span class="buttons has-addons field are-small">
+                                        <button class="button">
+                                            <span class="icon is-small">
+                                                {% include icon.html i='caret-up' %}
+                                            </span>
+                                        </button>
+                                        <button class="button">
+                                            <span class="icon is-small">
+                                                {% include icon.html i='caret-down' %}
+                                            </span>
+                                        </button>
+                                    </span>
+                                </template>
                             </li>
                         </template>
                     </ul>
