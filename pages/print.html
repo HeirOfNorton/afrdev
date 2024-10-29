@@ -103,10 +103,10 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
             <div x-show="opentab == 'order'">
                 <h2 class="title is-3">Section Order</h2>
                 <div class="block">
-                    <ul class="panel" x-sort >
+                    <ul class="panel">
                         <template x-for="(section, index) in order" :key="section.section">
-                            <li class="panel-block is-flex is-flex-direction-row" x-sort:item="index" >
-                                <span class="is-flex-grow-1" x-text="section.name" x-sort:handle ></span>
+                            <li class="panel-block is-flex is-flex-direction-row">
+                                <span class="is-flex-grow-1" x-text="section.name"></span>
                                 <span class="buttons has-addons field are-small" x-show="section.section != 'contact'">
                                     <button class="button" :disabled="index < 2" @click="order.splice(index-1, 0, order.splice(index, 1)[0])">
                                         <span class="icon is-small">
