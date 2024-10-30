@@ -13,14 +13,18 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
             contact:        $persist(blankForm('Contact', false)).as('contact'),
             summary:        $persist(blankForm('Summary', false)).as('summary'),
             experience:     $persist(blankForm('Experience', false)).as('experience'),
+            volunteering:   $persist(blankForm('Volunteer Experience', false)).as('volunteering'),
             education:      $persist(blankForm('Education', false)).as('education'),
             projects:       $persist(blankForm('Projects', false)).as('projects'),
+            schoolprojects: $persist(blankForm('School Projects', false)).as('schoolprojects'),
             activities:     $persist(blankForm('Activities', false)).as('activities'),
             skills:         $persist(blankForm('Skills', false)).as('skills'),
             proskills:      $persist(blankForm('Professional Skills', false)).as('proskills'),
             certifications: $persist(blankForm('Certifications', false)).as('certifications'),
+            memberships:    $persist(blankForm('Memberships', false)).as('memberships'),
             awards:         $persist(blankForm('Awards', false)).as('awards'),
             languages:      $persist(blankForm('Languages', false)).as('languages'),
+            hobbies:        $persist(blankForm('Hobbies', false)).as('hobbies'),
         },
 
         style: $persist({
