@@ -1,6 +1,6 @@
 <template x-for="(item, itemidx) in self.items" :key="item.key">
-    <div>
-        <div class="block is-flex is-flex-direction-row">
+    <div class="block">
+        <div class="is-flex is-flex-direction-row">
             <h3 class="subtitle is-4" x-text = "'#' + itemidx"></h3>
             <hr class="is-flex-grow-1">
             <div class="field buttons is-right" x-show="self.items.length > 1">
