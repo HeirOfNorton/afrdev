@@ -1,11 +1,14 @@
 <template x-for="(item, itemidx) in self.items" :key="item.key">
     <div>
     <hr class="block" x-show="itemidx > 0">
-    <section class="section">
+    <section class="block">
+        <div class="field buttons is-right" x-show="self.items.length > 1">
+            <button class="button is small is-danger-light" @click="delItem(self, itemidx)">Delete this job</button>
+        </div>
+
         <div class="field">
             <label class="label">
-                <span>{{ include.vars.item-name }}</span>
-                <button class="button is small is-danger-light is-pulled-right" @click="delItem(self, itemidx)" x-show="self.items.length > 1">Delete this job</button>
+                {{ include.vars.item-name }}
             </label>
             <div class="control">
                 <input
