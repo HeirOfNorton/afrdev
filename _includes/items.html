@@ -1,7 +1,8 @@
 <template x-for="(item, itemidx) in self.items" :key="item.key">
-    <section class="section">
-
+    <section class="section box">
+        {% comment %}
         <hr class="block" x-show="itemidx > 0">
+        {% endcomment %}
 
         <div class="field buttons is-right" x-show="self.items.length > 1">
             <button class="button is small is-danger-light" @click="delItem(self, itemidx)">Delete this job</button>
