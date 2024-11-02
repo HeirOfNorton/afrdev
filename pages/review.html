@@ -14,12 +14,18 @@ sections:
     -   name: experience
         type: items
         link: '/experience/'
+    -   name: volunteering
+        type: items
+        link: '/experience/#volunteering'
+    -   name: projects
+        type: items
+        link: '/experience/#projects'
     -   name: education
         type: items
         link: '/education/'
-    -   name: projects
+    -   name: schoolprojects
         type: items
-        link: '/projects/#projects'
+        link: '/projects/#schoolprojects'
     -   name: activities
         type: items
         link: '/projects/#activities'
@@ -32,12 +38,18 @@ sections:
     -   name: certifications
         type: items
         link: '/extras/#certifications'
+    -   name: memberships
+        type: items
+        link: '/extras/#memberships'
     -   name: awards
         type: items
         link: '/extras/#awards'
     -   name: languages
         type: list
         link: '/extras/#languages'
+    -   name: hobbies
+        type: list
+        link: '/extras/#hobbies'
 ---
 
 <h1 class="title is-1">Review</h1>
@@ -46,14 +58,18 @@ sections:
     contact:        $persist(blankForm('Contact', false)).as('contact'),
     summary:        $persist(blankForm('Summary', false)).as('summary'),
     experience:     $persist(blankForm('Experience', false)).as('experience'),
-    education:      $persist(blankForm('Education', false)).as('education'),
+    volunteering:   $persist(blankForm('Volunteer Experience', false)).as('volunteering'),
     projects:       $persist(blankForm('Projects', false)).as('projects'),
+    education:      $persist(blankForm('Education', false)).as('education'),
+    schoolprojects: $persist(blankForm('School Projects', false)).as('schoolprojects'),
     activities:     $persist(blankForm('Activities', false)).as('activities'),
     skills:         $persist(blankForm('Skills', false)).as('skills'),
     proskills:      $persist(blankForm('Professional Skills', false)).as('proskills'),
     certifications: $persist(blankForm('Certifications', false)).as('certifications'),
+    memberships:    $persist(blankForm('Memberships', false)).as('memberships'),
     awards:         $persist(blankForm('Awards', false)).as('awards'),
     languages:      $persist(blankForm('Languages', false)).as('languages'),
+    hobbies:        $persist(blankForm('Hobbies', false)).as('hobbies'),
 
     reviewing:      $persist(true).as('reviewing'),
     reviewsection:  $persist('/review/').as('reviewsection'),

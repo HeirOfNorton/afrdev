@@ -5,9 +5,11 @@ permalink: /experience/
 previous: /summary/
 next: /education/
 navbar: 3
+skippable: true
 forms:
     -
         type: Items
+        skippable: true
         title: Experience
         title-edit: True
         key: experience
@@ -21,6 +23,31 @@ forms:
             current: Current Job
             current-blocks: true
         subitems: Accomplishments
+    -
+        type: Items
+        skippable: true
+        title: Volunteer Experience
+        title-edit: True
+        key: volunteering
+        add-more: True
+        org: Organization
+        item-name: Title
+        location: Location
+        dates:
+            start: Start Date
+            end: End Date
+            current: Current
+            current-blocks: true
+        subitems: Accomplishments
+    -
+        type: Items
+        skippable: true
+        title: Projects
+        title-edit: True
+        key: projects
+        add-more: True
+        item-name: Project
+        subitems: Details
 ---
 
 <p class="block is-size-3">

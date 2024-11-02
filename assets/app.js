@@ -100,12 +100,16 @@ function blankForm(title, preskip, subtitle='') {
             break;
         case 'Skills':
         case 'Languages':
+        case 'Hobbies':
             return blankList(title, preskip);
             break;
         case 'Experience':
+        case 'Volunteer Experience':
         case 'Education':
         case 'Professional Skills':
         case 'Projects':
+        case 'School Projects':
+        case 'Memberships':
         case 'Activities':
         case 'Certifications':
         case 'Awards':
@@ -204,14 +208,18 @@ const defaultOrder = {
             'contact',
             'summary',
             'education',
-            'projects',
+            'schoolprojects',
             'activities',
             'experience',
+            'volunteering',
+            'projects',
             'certifications',
+            'memberships',
             'skills',
             'proskills',
             'awards',
-            'languages'
+            'languages',
+            'hobbies',
         ],
     functional: [
             'contact',
@@ -219,25 +227,33 @@ const defaultOrder = {
             'skills',
             'proskills',
             'experience',
+            'volunteering',
+            'projects',
             'certifications',
             'education',
-            'projects',
+            'schoolprojects',
             'activities',
+            'memberships',
             'awards',
-            'languages'
+            'languages',
+            'hobbies',
         ],
     chronological: [
             'contact',
             'summary',
             'experience',
+            'volunteering',
+            'projects',
             'certifications',
             'education',
-            'projects',
+            'schoolprojects',
             'activities',
             'skills',
             'proskills',
+            'memberships',
             'awards',
-            'languages'
+            'languages',
+            'hobbies',
         ],
 }
 
