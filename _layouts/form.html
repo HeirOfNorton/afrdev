@@ -72,8 +72,14 @@ layout: page
                     <div class="level-right">
                         {% if form.title-edit %}
                             <div class="level-item">
-                                <button class="button is-small is-primary-inverted" x-show="!editing" @click="editing=true">Edit Title</button>
-                                <button class="button is-small is-primary" x-show="editing" @click="editing=false">Save Title</button>
+                                <button class="button is-small is-primary-inverted" x-show="!editing" @click="editing=true">
+                                    <span class="icon is-small">{% include icon.html i='pen' %}</span>
+                                    <span>Edit Title</span>
+                                </button>
+                                <button class="button is-small is-primary" x-show="editing" @click="editing=false">
+                                    <span class="icon is-small">{% include icon.html i='check' %}</span>
+                                    <span>Save</span>
+                                </button>
                             </div>
                         {% endif %}
                     </div>

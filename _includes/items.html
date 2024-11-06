@@ -1,10 +1,13 @@
 <template x-for="(item, itemidx) in self.items" :key="item.key">
     <div class="block">
         <div class="is-flex is-flex-direction-row">
-            <h3 class="subtitle is-4" x-text = "'#' + itemidx"></h3>
+            <h3 class="subtitle is-4" x-text = "'#' + (itemidx + 1)"></h3>
             <hr class="is-flex-grow-1">
             <div class="field buttons is-right" x-show="self.items.length > 1">
-                <button class="button is small is-danger-light" @click="delItem(self, itemidx)">Delete this job</button>
+                <button class="button is small is-danger-light" @click="delItem(self, itemidx)">
+                    <span class="icon is-small">{% include icon.html i = 'xmark' %}</span>
+                    <span>Delete</span>
+                </button>
             </div>
         </div>
     <section class="block">
@@ -132,6 +135,9 @@
 </template>
 
 <div class="block field buttons">
-    <button class="block button is-link-inverted" @click="addFullItem(self)">Add more</button>
+    <button class="block button is-link-inverted" @click="addFullItem(self)">
+        <span class="icon is-small">{% include icon.html i='plus' %}</span>
+        <span>Add more</span>
+    </button>
 </div>
 
