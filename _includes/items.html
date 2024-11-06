@@ -1,5 +1,6 @@
 <template x-for="(item, itemidx) in self.items" :key="item.key">
     <div class="block">
+        {% comment %}
         <div class="is-flex is-flex-direction-row">
             <h3 class="subtitle is-4" x-text = "'#' + (itemidx + 1)"></h3>
             <hr class="is-flex-grow-1">
@@ -8,6 +9,21 @@
                     <span class="icon is-small">{% include icon.html i = 'xmark' %}</span>
                     <span>Delete</span>
                 </button>
+            </div>
+        </div>
+        {% endcomment %}
+        <div class="level">
+            <div class="level-left">
+                <h3 class="is-size-4" x-text = "'#' + (itemidx + 1)"></h3>
+                <hr class="is-flex-grow-1">
+            </div>
+            <div class="level-right">
+                <div class="field buttons is-right" x-show="self.items.length > 1">
+                    <button class="button is small is-danger-light" @click="delItem(self, itemidx)">
+                        <span class="icon is-small">{% include icon.html i = 'xmark' %}</span>
+                        <span>Delete</span>
+                    </button>
+                </div>
             </div>
         </div>
     <section class="block">
