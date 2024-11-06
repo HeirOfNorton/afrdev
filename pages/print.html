@@ -79,17 +79,23 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
 <div class="columns printcontainer">
 
     <div class="column noprint" x-data="{opentab: $persist('page').as('opentab')}">
-        <div><div class="tabs is-boxed is-centered">
-            <ul>
-                <li class="" :class="opentab == 'page' && 'is-active'"><a @click="opentab = 'page'">Page</a></li>
-                <li class="" :class="opentab == 'order' && 'is-active'"><a @click="opentab = 'order'">Section Order</a></li>
-                <li class="" :class="opentab == 'fonts' && 'is-active'"><a @click="opentab = 'fonts'">Fonts</a></li>
-                <li class="" :class="opentab == 'items' && 'is-active'"><a @click="opentab = 'items'">Items</a></li>
-                <li class="" :class="opentab == 'lists' && 'is-active'"><a @click="opentab = 'lists'">Lists</a></li>
-                <li class="" :class="opentab == 'headings' && 'is-active'"><a @click="opentab = 'headings'">Headings</a></li>
-                <li class="" :class="opentab == 'contact' && 'is-active'"><a @click="opentab = 'contact'">Contact Info</a></li>
-            </ul>
-        </div></div>
+        <div>
+            <div class="tabs is-boxed is-centered">
+                <ul>
+                    <li class="" :class="opentab == 'page' && 'is-active'"><a @click="opentab = 'page'">Page</a></li>
+                    <li class="" :class="opentab == 'order' && 'is-active'"><a @click="opentab = 'order'">Section Order</a></li>
+                    <li class="" :class="opentab == 'fonts' && 'is-active'"><a @click="opentab = 'fonts'">Fonts</a></li>
+                    <li class="" :class="opentab == 'items' && 'is-active'"><a @click="opentab = 'items'">Items</a></li>
+                </ul>
+            </div>
+            <div class="tabs is-boxed is-centered">
+                <ul>
+                    <li class="" :class="opentab == 'lists' && 'is-active'"><a @click="opentab = 'lists'">Lists</a></li>
+                    <li class="" :class="opentab == 'headings' && 'is-active'"><a @click="opentab = 'headings'">Headings</a></li>
+                    <li class="" :class="opentab == 'contact' && 'is-active'"><a @click="opentab = 'contact'">Contact Info</a></li>
+                </ul>
+            </div>
+        </div>
         <div class="box">
             <div x-show="opentab == 'page'">
                 <h2 class="title is-3">Page Size</h2>
