@@ -112,10 +112,27 @@
         {% endif %}
 
         {% if include.vars.subitems %}
-        <div class="field">
-            <label class="label">
-                {{ include.vars.subitems }}
-            </label>
+        <div class="field" x-data="{ editing: false }">
+            <div class="block level">
+                <div class="level-left">
+                    <div class="level-item">
+                        <h4 class="title is-6" x-show="!editing" x-text="self.subtitle"></h3>
+                        <div class="control" x-show="editing">
+                            <input class="input is-small" x-model="self.subtitle">
+                        </div>
+                    </div>
+                    <div class="level-item">
+                        <button class="button is-small is-primary-inverted" x-show="!editing" @click="editing=true">
+                            <span class="icon is-small">{% include icon.html i='pen' %}</span>
+                            <span>Edit Subtitle</span>
+                        </button>
+                        <button class="button is-small is-primary" x-show="editing" @click="editing=false">
+                            <span class="icon is-small">{% include icon.html i='check' %}</span>
+                            <span>Save</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
             <div class="field">
                 <div class="control">
                     <div
