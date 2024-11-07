@@ -118,16 +118,32 @@ extrajs: ['docx.min.js', 'FileSaver.min.js']
                             <li class="panel-block is-flex is-flex-direction-row">
                                 <span class="is-flex-grow-1" :class="section.hidden ? 'has-text-danger' : 'has-text-weight-bold'" x-text="section.name"></span>
                                 <span class="buttons has-addons field are-small" x-show="section.section != 'contact'">
-                                    <button class="button" :disabled="index < 2" @click="order.splice(index-1, 0, order.splice(index, 1)[0])">
-                                        <span class="icon is-small">
-                                            {% include icon.html i='caret-up' %}
-                                        </span>
-                                    </button>
-                                    <button class="button" :disabled="index > order.length - 2" @click="order.splice(index+1, 0, order.splice(index, 1)[0])">
-                                        <span class="icon is-small">
-                                            {% include icon.html i='caret-down' %}
-                                        </span>
-                                    </button>
+                                    <template x-if="index < 2">
+                                        <button class="button is-text is-static" disabled>
+                                            <span class="icon is-small">
+                                            </span>
+                                        </button>
+                                    </template>
+                                    <template x-if="index > 1">
+                                        <button class="button" @click="order.splice(index-1, 0, order.splice(index, 1)[0])">
+                                            <span class="icon is-small">
+                                                {% include icon.html i='caret-up' %}
+                                            </span>
+                                        </button>
+                                    </template>
+                                    <template x-if="index > order.length - 2">
+                                        <button class="button is-text is-static" disabled>
+                                            <span class="icon is-small">
+                                            </span>
+                                        </button>
+                                    </template>
+                                    <template x-if="index < order.length - 1">
+                                        <button class="button" @click="order.splice(index+1, 0, order.splice(index, 1)[0])">
+                                            <span class="icon is-small">
+                                                {% include icon.html i='caret-down' %}
+                                            </span>
+                                        </button>
+                                    </template>
                                 </span>
                                 <label class="checkbox ml-4" x-show="section.section != 'contact'">
                                     <input class="mr-1" type="checkbox" x-model="section.hidden">Hide
