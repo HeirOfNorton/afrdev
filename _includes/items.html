@@ -31,7 +31,7 @@
                     </button>
                 </template>
             </span>
-            <div class="field buttons is-right" x-show="self.items.length > 1">
+            <div class="field buttons is-right ml-4" x-show="self.items.length > 1">
                 <button class="button is small is-danger-light" @click="delItem(self, itemidx)">
                     <span class="icon is-small">{% include icon.html i = 'xmark' %}</span>
                     <span>Delete</span>
