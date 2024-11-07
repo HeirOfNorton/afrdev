@@ -3,6 +3,34 @@
         <div class="is-flex is-flex-direction-row">
             <h3 class="is-size-4" x-text = "'#' + (itemidx + 1)"></h3>
             <hr class="is-flex-grow-1 mx-2">
+            <span class="buttons has-addons field are-small">
+                <template x-if="itemidx === 0">
+                    <button class="button is-text is-static" disabled>
+                        <span class="icon is-small">
+                        </span>
+                    </button>
+                </template>
+                <template x-if="itemidx > 0">
+                    <button class="button" @click="self.items.splice(itemidx-1, 0, self.items.splice(itemidx, 1)[0])">
+                        <span class="icon is-small">
+                            {% include icon.html i='caret-up' %}
+                        </span>
+                    </button>
+                </template>
+                <template x-if="itemidx >= self.items.length - 1">
+                    <button class="button is-text is-static" disabled>
+                        <span class="icon is-small">
+                        </span>
+                    </button>
+                </template>
+                <template x-if="itemidx < self.items.length - 1">
+                    <button class="button" @click="self.items.splice(itemidx+1, 0, self.items.splice(itemidx, 1)[0])">
+                        <span class="icon is-small">
+                            {% include icon.html i='caret-down' %}
+                        </span>
+                    </button>
+                </template>
+            </span>
             <div class="field buttons is-right" x-show="self.items.length > 1">
                 <button class="button is small is-danger-light" @click="delItem(self, itemidx)">
                     <span class="icon is-small">{% include icon.html i = 'xmark' %}</span>
