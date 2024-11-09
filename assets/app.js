@@ -9,6 +9,10 @@ function createRandomString(length) {
     return result;
 }
 
+function textareaHeight(el) {
+    el.style.height = (el.scrollHeight > el.clientHeight) ? (el.scrollHeight)+"px" : "60px";
+}
+
 function blankContact(title, preskip) {
     return {
         type: 'contact',
