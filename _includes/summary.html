@@ -7,7 +7,7 @@
             placeholder="Write a short Summary paragraph."
             aria-label="Summary"
             x-model="self.contents"
-            x-init="textareaHeight($el)"
+            x-init="$nexttick(() => {textareaHeight($el)})"
             @input="textareaHeight($el)"
         ></textarea>
     </div>
