@@ -10,6 +10,7 @@ function createRandomString(length) {
 }
 
 function textareaHeight(el) {
+    el.style.height = "128px";
     el.style.height = (el.scrollHeight > el.clientHeight) ? (el.scrollHeight + 2)+"px" : "128px";
 }
 
