@@ -1,12 +1,44 @@
 <template x-for="(item, itemidx) in self.items" :key="item.key">
-    <section class="section">
-
-        <hr class="block" x-show="itemidx > 0">
-
-        <div class="field buttons is-right" x-show="self.items.length > 1">
-            <button class="button is small is-danger-light" @click="delItem(self, itemidx)">Delete this job</button>
+    <div class="block">
+        <div class="is-flex is-flex-direction-row">
+            <h3 class="is-size-4" x-text = "'#' + (itemidx + 1)"></h3>
+            <hr class="is-flex-grow-1 mx-2">
+            <span class="buttons has-addons field are-small">
+                <template x-if="itemidx === 0">
+                    <button class="button is-text is-static" disabled>
+                        <span class="icon is-small">
+                        </span>
+                    </button>
+                </template>
+                <template x-if="itemidx > 0">
+                    <button class="button" @click="self.items.splice(itemidx-1, 0, self.items.splice(itemidx, 1)[0])">
+                        <span class="icon is-small">
+                            {% include icon.html i='caret-up' %}
+                        </span>
+                    </button>
+                </template>
+                <template x-if="itemidx >= self.items.length - 1">
+                    <button class="button is-text is-static" disabled>
+                        <span class="icon is-small">
+                        </span>
+                    </button>
+                </template>
+                <template x-if="itemidx < self.items.length - 1">
+                    <button class="button" @click="self.items.splice(itemidx+1, 0, self.items.splice(itemidx, 1)[0])">
+                        <span class="icon is-small">
+                            {% include icon.html i='caret-down' %}
+                        </span>
+                    </button>
+                </template>
+            </span>
+            <div class="field buttons is-right ml-4" x-show="self.items.length > 1">
+                <button class="button is small is-danger-light" @click="delItem(self, itemidx)">
+                    <span class="icon is-small">{% include icon.html i = 'xmark' %}</span>
+                    <span>Delete</span>
+                </button>
+            </div>
         </div>
-
+    <section class="block">
         <div class="field">
             <label class="label">
                 {{ include.vars.item-name }}
@@ -108,10 +140,27 @@
         {% endif %}
 
         {% if include.vars.subitems %}
-        <div class="field">
-            <label class="label">
-                {{ include.vars.subitems }}
-            </label>
+        <div class="field" x-data="{ editing: false }">
+            <div class="block level">
+                <div class="level-left">
+                    <div class="level-item">
+                        <h4 class="title is-6" x-show="!editing" x-text="self.subtitle"></h3>
+                        <div class="control" x-show="editing">
+                            <input class="input is-small" x-model="self.subtitle">
+                        </div>
+                    </div>
+                    <div class="level-item">
+                        <button class="button is-small is-primary-inverted" x-show="!editing" @click="editing=true">
+                            <span class="icon is-small">{% include icon.html i='pen' %}</span>
+                            <span>Edit Subtitle</span>
+                        </button>
+                        <button class="button is-small is-primary" x-show="editing" @click="editing=false">
+                            <span class="icon is-small">{% include icon.html i='check' %}</span>
+                            <span>Save</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
             <div class="field">
                 <div class="control">
                     <div
@@ -127,9 +176,13 @@
         {% endif %}
 
     </section>
+    </div>
 </template>
 
-<div class="field buttons">
-    <button class="block button is-link-inverted" @click="addFullItem(self)">Add more</button>
+<div class="block field buttons">
+    <button class="block button is-link-inverted" @click="addFullItem(self)">
+        <span class="icon is-small">{% include icon.html i='plus' %}</span>
+        <span>Add more</span>
+    </button>
 </div>
 
